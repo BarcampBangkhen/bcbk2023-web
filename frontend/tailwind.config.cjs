@@ -10,7 +10,8 @@ module.exports = {
         Falu:"#880D1E",
         Blond100:"#FFF3C6",
         Blond70:"#FFF7D8",
-        Blond20:"#FFFDF4"
+        Blond20:"#FFFDF4",
+        Rusty: "#DD2D4A",
       }
     },
   },
