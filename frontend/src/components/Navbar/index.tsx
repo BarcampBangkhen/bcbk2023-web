@@ -16,7 +16,6 @@ export default function Navbar() {
       }
 
 
-
       return (
             <React.Fragment>
                   <nav className="h-[120px] bg-transparent flex items-center px-2 py-2.5 w-full z-20  border border-black">

@@ -4,6 +4,9 @@ import "flowbite";
 
 import Home from "./components/Home";
 import About from "./components/About";
+import FAQS from "./components/FAQS";
+import TimeTable from "./components/TimeTable";
+import Session from "./components/Session";
 import Navbar from "./components/Navbar";
 
 function App():JSX.Element {
@@ -13,6 +16,9 @@ function App():JSX.Element {
       <Routes>
         <Route path="home" element={<Home/>} />
         <Route path="about" element={<About/>} />
+        <Route path="faqs" element={<FAQS/>} />
+        <Route path="timetable" element={<TimeTable/>} />
+        <Route path="session" element={<Session/>} />
       </Routes>
     </React.Fragment>
   )
