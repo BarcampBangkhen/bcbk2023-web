@@ -12,6 +12,7 @@ module.exports = {
         Blond70:"#FFF7D8",
         Blond20:"#FFFDF4",
         Rusty: "#DD2D4A",
+        Black: "#000000",
       }
     },
   },

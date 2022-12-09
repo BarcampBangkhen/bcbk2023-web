@@ -8,6 +8,7 @@ import FAQS from "./components/FAQS";
 import TimeTable from "./components/TimeTable";
 import Session from "./components/Session";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 function App():JSX.Element {
   return (
@@ -20,6 +21,7 @@ function App():JSX.Element {
         <Route path="timetable" element={<TimeTable/>} />
         <Route path="session" element={<Session/>} />
       </Routes>
+      <Footer/>
     </React.Fragment>
   )
 }
