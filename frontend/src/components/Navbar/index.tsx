@@ -15,57 +15,77 @@ export default function Navbar() {
             if (value === "Action Open") drawer.current?.classList.remove("-translate-x-full")
       }
 
-
       return (
             <React.Fragment>
-                  <nav className="h-[120px] bg-transparent flex items-center px-2 py-2.5 w-full z-20  border border-black">
-                        <div className="container relative flex items-center justify-between mx-auto border border-black">
-                              <span className="hidden md:flex items-center border border-black">
-                                    <img src="./Logo.png" className=" w-[117px] h-[74px]" alt="Flowbite Logo" />
+                  <nav className="h-[120px] bg-transparent flex items-center w-full">
+                        <div className="container relative flex items-center flex-shrink-0 justify-between mx-auto">
+                              <span className="hidden md:flex items-center md:ml-4 lg:ml-12">
+                                    <img src="./Logo.svg" className=" w-[125px] h-[70px]" alt="Flowbite Logo"/>
                               </span>
                               
-                              <div className="text-center md:hidden">
-                                    <button className="w-8 h-4 ml-1 flex justify-center" type="button" onClick={() => openDrawer("Action Open")}>
-                                          <img src="./hamberger.png" className="w-full" />
+                              <div className="md:hidden w-10 h-12 p-1 ml-8">
+                                    <button className="w-10 flex justify-center" type="button" onClick={() => openDrawer("Action Open")}>
+                                          <img src="./iconHamberger.svg" className="w-12 object-cover" />
                                     </button>
                               </div>
                               
-                              <span className="md:hidden border border-black">
-                                    <img src="./LogoBarcamp.png" className=" w-[210px] h-[66px]" alt="Flowbite Logo" />
+                              <span className="md:hidden">
+                                    <img src="./LogoBarcamp.svg" className=" w-[210px] h-[66px]" alt="Flowbite Logo" />
                               </span>
 
-                              <div className="hidden md:flex md:order-2">
-                                    <button type="button" className="py-2 px-6 text-Falu text-xl font-medium border border-Falu rounded">Register</button>
+                              <div className="hidden md:flex md:order-2 lg:mr-12">
+                                    <button type="button" className="py-2 px-6 text-Falu100 text-xl font-medium border border-Falu100 rounded">Register</button>
                               </div>
-                              <div className="hidden w-full md:flex md:items-center md:justify-around border" id="navbar-sticky">
-                                    <ul className="flex flex-col p-4 mt-4 border border-black   md:flex-row md:space-x-8 md:mt-0 md:text-md md:font-medium">
+                              <div className="hidden w-full md:flex md:items-center md:justify-around" id="navbar-sticky">
+                                    <ul className="flex flex-col p-4 mt-4 md:flex-row md:space-x-8 lg:space-x-20 md:mt-0 md:text-md md:font-medium">
                                           <li>
-                                                <a href="#" className="block  text-Falu text-xl border border-black" aria-current="page">Home</a>
+                                                <NavLink to="/home" className="block text-Falu100 text-xl pt-2">Home</NavLink>
                                           </li>
                                           <li>
-                                                <a href="#" className="block  text-Falu text-xl border border-black">About</a>
+                                                <NavLink to="/about"  className="block text-Falu100 text-xl pt-2">About</NavLink>
                                           </li>
                                           <li>
-                                                <a href="#" className="block  text-Falu text-xl border border-black">FAQS</a>
+                                                <NavLink to="/faqs" className="block text-Falu100 text-xl pt-2">FAQS</NavLink>
                                           </li>
                                           <li>
-                                                <a href="#" className="block  text-Falu text-xl border border-black">Timetable</a>
+                                                <NavLink to="/timetable" className="block text-Falu100 text-xl pt-2">Timetable</NavLink>
                                           </li>
                                           <li>
-                                                <a href="#" className="block  text-Falu text-xl border border-black">Session</a>
+                                                <NavLink to="/session" className="block text-Falu100 text-xl pt-2">Session</NavLink>
                                           </li>
                                     </ul>
                               </div>
                         </div>
                   </nav>
                   
-                  <div className="bg-Blond20 w-64 fixed top-0 left-0 h-screen rounded-r-xl shadow-2xl transition-transform duration-300 ease-in" ref={drawer}>
+                  <div className="bg-Blond20 w-[300px] fixed top-0 left-0 h-screen rounded-r-xl shadow-2xl -translate-x-full transition-transform duration-300 ease-in" ref={drawer}>
                         <div className="flex justify-end py-5">
-                              <button className=" mr-5 p-2" onClick={() => closeDrawer("Action Close")}>
+                              <button className="mr-5 p-2" onClick={() => closeDrawer("Action Close")}>
                                     <span>
-                                          <img src="./cross.png" alt="cross" />
+                                          <img src="./cross.svg" alt="cross" />
                                     </span>
                               </button>
+                        </div>
+
+                        <div>
+                              <ul>
+                                    <li className="flex mt-12">
+                                          <img src="./iconAbout.svg" className="ml-12 w-7"/>
+                                          <NavLink to="/about"  className="mb-2 ml-5 text-Falu100 text-xl pt-2 font-semibold">About</NavLink>
+                                    </li>
+                                    <li className="flex mt-6"> 
+                                          <img src="./iconFAQS.svg" className="ml-12 w-7"/>
+                                          <NavLink to="/faqs" className="mb-2 ml-5  text-Falu100 text-xl pt-2 font-semibold">FAQS</NavLink>
+                                    </li>
+                                    <li className="flex mt-6">
+                                          <img src="./iconTimetable.svg" className="ml-12 w-7"/>
+                                          <NavLink to="/timetable" className="mb-2 ml-5  text-Falu100 text-xl pt-2 font-semibold">Timetable</NavLink>
+                                    </li>
+                                    <li className="flex mt-6">
+                                          <img src="./iconSession.svg" className="ml-12 w-7"/>
+                                          <NavLink to="/session" className="mb-2 ml-5  text-Falu100 text-xl pt-2 font-semibold">Session</NavLink>
+                                    </li>
+                              </ul>
                         </div>
                   </div>
             </React.Fragment>
