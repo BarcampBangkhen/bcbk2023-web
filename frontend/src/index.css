@@ -4,9 +4,16 @@
 
 
 body{
-      background-image: url("./backgroundDesktop.png");
+      font-family: 'Kanit', sans-serif;
+      background-image: url("./backgroundDesktop.svg");
       background-position: left top;
       background-repeat: no-repeat;
       background-size: cover;
       height: 100vh;
+}
+
+@media screen and (max-width:768px) {
+      body{
+            background-image: url("./backgroundMobile.svg");
+      }
 }
