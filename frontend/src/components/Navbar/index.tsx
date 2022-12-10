@@ -10,7 +10,7 @@ export default function Navbar() {
             window.addEventListener("resize",AutomaticClodeDrawer)
             
             return () => {
-                  window.removeEventListener("load",AutomaticClodeDrawer)
+                  window.removeEventListener("resize",AutomaticClodeDrawer)
             }   
       },[])
 
@@ -31,6 +31,11 @@ export default function Navbar() {
       //* ฟังชันก์เปิด Drawer
       const openDrawer = (value:string) => {
             if (value === "Action Open") drawer.current?.classList.remove("-translate-x-full")
+      }
+
+      //* ฟังชันก์จัดการ about page ในตอนหน้าจอน้อยกว่า 768px  
+      const clickLinkAbout = () => {
+            window.location.href = "/#myabout"
       }
 
       return (
@@ -97,13 +102,9 @@ export default function Navbar() {
                         {/* Drawer Menu */}
                         <div>
                               <ul>
-                                    <li className="flex mt-12">
-                                          <img src="./iconAbout.svg" className="ml-12 w-7"/>
-                                          <NavLink to="/"  className="mb-2 ml-5 text-Falu100 text-xl pt-2 font-semibold">Home</NavLink>
-                                    </li>
                                     <li className="flex mt-6">
                                           <img src="./iconAbout.svg" className="ml-12 w-7"/>
-                                          <NavLink to="/about"  className="mb-2 ml-5 text-Falu100 text-xl pt-2 font-semibold">About</NavLink>
+                                          <span onClick={clickLinkAbout}  className="mb-2 ml-5 text-Falu100 text-xl pt-2 font-semibold cursor-pointer">About</span>
                                     </li>
                                     <li className="flex mt-6"> 
                                           <img src="./iconFAQS.svg" className="ml-12 w-7"/>

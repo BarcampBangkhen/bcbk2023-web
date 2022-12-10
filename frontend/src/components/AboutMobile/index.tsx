@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function AboutMobile() {
   return (
-      <div className='container max-w-7xl mx-auto mt-4 md:mt-16'>
+      <div className='container max-w-7xl mx-auto mt-4 md:mt-16' id="myabout">
             <div className='px-10'>
                   <hr className=' border-black bg-black mt-24'/>
             </div>

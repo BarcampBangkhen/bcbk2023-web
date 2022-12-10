@@ -1,6 +1,22 @@
 import React from 'react'
+import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export default function About() {
+  
+  const navigate = useNavigate()
+  useEffect(() => {
+    window.addEventListener("resize",RedirectPath)
+    
+    return () => {
+      window.removeEventListener("resize",RedirectPath)
+    } 
+  },[])
+
+  //* ฟังชันก์ให้ redirect ไปยัง path "/"
+  function RedirectPath(){
+    if (window.outerWidth <= 768)  navigate("/")
+  }
   
   return (
     <React.Fragment>

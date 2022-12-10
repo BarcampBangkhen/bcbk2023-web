@@ -1,4 +1,5 @@
 import React from "react";
+import {useEffect , useState} from "react"
 import {Routes , Route} from "react-router-dom"
 
 import "flowbite";
@@ -11,10 +12,11 @@ import Session from "./components/Session";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
+
 function App():JSX.Element {
   return (
     <React.Fragment>
-      <Navbar/>
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="about" element={<About/>} />
