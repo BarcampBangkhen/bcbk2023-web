@@ -4,8 +4,9 @@ import React from 'react'
 export default function Footer() {
   return (
     <div className='container max-w-7xl mx-auto mt-8 md:mt-32 lg:mt-72  xl:mt-48 p-4 pb-16'>
-        <div className=" bg-Blond20 md:bg-Blond70 w-full px-[82px] py-[30px] rounded-lg drop-shadow-xl flex flex-col items-center md:block md:items-start">
+        <div className=" bg-Blond20 md:bg-Blond70 w-full px-[82px] py-[30px] rounded-lg drop-shadow-2xl flex flex-col items-center md:block md:items-start">
             
+            {/* block 1 */}
              <div className="w-80 text-center mb-8 md:w-auto md:mb-0 md:flex md:justify-between md:items-center">
                 <img src="./LogoBarcamp.svg" className="hidden md:block w-[289px] h-[91px]"></img>
                 <div>
@@ -16,6 +17,7 @@ export default function Footer() {
             
             <hr className="hidden md:block md:my-14 md:border-black"/>
             
+            {/* block 2 */}
             <div className="block md:grid md:grid-cols-2">
 
                 <div className='hidden md:block'>
@@ -53,6 +55,7 @@ export default function Footer() {
                 </div>
             </div>
             
+            {/* block 3 */}
             <div className='mt-12 md:mt-4 text-base text-center md:text-start md:text-lg'>
                 Copyright © 2022 Barcamp Bangkhen. All Rights Reserved.
             </div>

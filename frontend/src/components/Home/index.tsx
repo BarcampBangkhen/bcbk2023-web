@@ -1,25 +1,26 @@
 import React from 'react'
 import { useEffect , useState } from 'react'
-
+import "flowbite";
 
 import AboutMobile from '../AboutMobile'
+
 
 export default function Home() {
   const [displayAboutMobile,setDisplayAboutMobile] = useState<boolean>(true)
 
-  
-  
-  
   useEffect(() => {
-    window.addEventListener("load",() => {
-      //console.log(window.outerWidth)
-      if (window.outerWidth <= 768){
-        setDisplayAboutMobile(true)
-      }else{
-        setDisplayAboutMobile(false)
-      }
-    })
+    window.outerWidth <= 768 ? setDisplayAboutMobile(true) : setDisplayAboutMobile(false)
+    window.addEventListener("resize",EventResponsive)
+    
+    return () => {
+      window.removeEventListener("resize",EventResponsive)
+    }
+    
   },[])
+
+  function EventResponsive(){
+    window.outerWidth <= 768 ? setDisplayAboutMobile(true) : setDisplayAboutMobile(false)
+  }
   
   return (
     <React.Fragment>
@@ -50,8 +51,9 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      {/* display page AboutMobile when the size screen < 768px */}
       {displayAboutMobile ? <AboutMobile/> : null}
-      
     </React.Fragment>
   )
 }

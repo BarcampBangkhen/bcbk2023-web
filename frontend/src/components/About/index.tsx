@@ -1,25 +1,7 @@
 import React from 'react'
-import { useEffect , useState } from 'react'
-
-import AboutMobile from '../AboutMobile'
 
 export default function About() {
-
-  const [displayAboutMobile,setDisplayAboutMobile] = useState<boolean>(false)
-
-  useEffect(() => {
-    window.addEventListener("resize",() => {
-      //console.log(window.outerWidth)
-      if (window.outerWidth <= 1300){
-        setDisplayAboutMobile(true)
-      }else{
-        setDisplayAboutMobile(false)
-      }
-    })
-  },[])
-
   
-
   return (
     <React.Fragment>
       <div className='container xl:relative max-w-7xl mx-auto mt-4 md:mt-16 h-auto lg:h-[650px]'>
