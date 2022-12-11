@@ -1,4 +1,5 @@
 import React from 'react'
+import "flowbite";
 
 export default function Session() {
   return (

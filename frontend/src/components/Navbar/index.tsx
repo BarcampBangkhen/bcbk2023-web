@@ -1,6 +1,6 @@
-import React from "react"
-import { useRef , useEffect } from "react"
+import React , { useRef , useEffect } from "react"
 import {NavLink} from "react-router-dom"
+import "flowbite";
 
 
 export default function Navbar() {
@@ -14,9 +14,9 @@ export default function Navbar() {
             }   
       },[])
 
-      //* ฟังชันก์ให้ปิด Drawer อัตโนมัต
+      //* ฟังชันก์ให้ปิด Drawer อัตโนมัติ
       function AutomaticClodeDrawer(){
-            if (window.outerWidth >= 768){
+            if (window.outerWidth > 768){
                   if (!drawer.current?.classList.contains("-translate-x-full")){
                         drawer.current?.classList.add("-translate-x-full")
                   }
@@ -103,6 +103,10 @@ export default function Navbar() {
                         <div>
                               <ul>
                                     <li className="flex mt-6">
+                                          <img src="./iconHome.svg" className="ml-12 w-7"/>
+                                          <NavLink to="/"  className="mb-2 ml-5 text-Falu100 text-xl pt-2 font-semibold cursor-pointer">Home</NavLink>
+                                    </li>
+                                    <li className="flex mt-6">
                                           <img src="./iconAbout.svg" className="ml-12 w-7"/>
                                           <span onClick={clickLinkAbout}  className="mb-2 ml-5 text-Falu100 text-xl pt-2 font-semibold cursor-pointer">About</span>
                                     </li>
@@ -119,6 +123,11 @@ export default function Navbar() {
                                           <NavLink to="/session" className="mb-2 ml-5  text-Falu100 text-xl pt-2 font-semibold">Session</NavLink>
                                     </li>
                               </ul>
+                        </div>
+
+                        {/* Cross Icon */}
+                        <div className="absolute bottom-20 left-2/4 -translate-x-2/4">
+                              <button className="bg-Falu100 text-white px-12 py-2 rounded">Register</button>
                         </div>
                   </div>
             </React.Fragment>

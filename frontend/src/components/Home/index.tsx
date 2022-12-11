@@ -1,11 +1,11 @@
-import React from 'react'
-import { useEffect , useState } from 'react'
+import React , { useEffect , useState } from 'react'
 import "flowbite";
 
 import AboutMobile from '../AboutMobile'
 
 
 export default function Home() {
+  
   const [displayAboutMobile,setDisplayAboutMobile] = useState<boolean>(true)
 
   useEffect(() => {
