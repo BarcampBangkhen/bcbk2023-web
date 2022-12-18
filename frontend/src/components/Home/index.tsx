@@ -4,24 +4,7 @@ import "flowbite";
 import AboutMobile from '../AboutMobile'
 
 
-export default function Home() {
-  
-  const [displayAboutMobile,setDisplayAboutMobile] = useState<boolean>(true)
-
-  useEffect(() => {
-    window.outerWidth <= 768 ? setDisplayAboutMobile(true) : setDisplayAboutMobile(false)
-    window.addEventListener("resize",EventResponsive)
-    
-    return () => {
-      window.removeEventListener("resize",EventResponsive)
-    }
-    
-  },[])
-
-  function EventResponsive(){
-    window.outerWidth <= 768 ? setDisplayAboutMobile(true) : setDisplayAboutMobile(false)
-  }
-  
+export default function Home() {  
   return (
     <React.Fragment>
       <div className='container max-w-7xl mx-auto mt-4 md:mt-16'>
@@ -36,7 +19,7 @@ export default function Home() {
               <p className='text-lg mt-1 md:mt-0 font-semibold'>At IUP Building 17,Kasetsart University</p>
             </div>
             
-            <div className=' mt-8 ml-12 md:ml-6 lg:ml-32'>
+            <div className='mt-8 ml-12 md:ml-6 lg:ml-32'>
               <button className='bg-Falu100 py-[6px] px-[12px] font-medium text-white text-xl rounded'>Register now</button>
               <span className='hidden md:inline-flex translate-y-1 border-2 border-Rusty100 ml-5 py-[4px] px-[10px] items-center rounded-3xl font-medium text-lg'>
                 <img src="./iconhourglass.svg" alt="hourglass" className='mr-2' />
@@ -53,7 +36,7 @@ export default function Home() {
       </div>
 
       {/* display page AboutMobile when the size screen < 768px */}
-      {displayAboutMobile ? <AboutMobile/> : null}
+      <AboutMobile />
     </React.Fragment>
   )
 }
