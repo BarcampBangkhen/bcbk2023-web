@@ -29,10 +29,13 @@ const MobileSidebar = () => {
 
     return (
         <div className="md:hidden">
-            <div className="w-10 h-12 p-1 ml-8 mt-8">
-                <button className="w-10 flex justify-center" type="button" onClick={toggleSidebar}>
+            <div className="flex ml-8 mt-4">
+                <button className="w-10" type="button" onClick={toggleSidebar}>
                     <img src="./iconHamberger.svg" className="object-cover" />
                 </button>
+                <div className="grow flex justify-center">
+                    <img src="./LogoBarcamp.svg"></img>
+                </div>
             </div>
             <div className={`bg-Blond20 w-[300px] fixed top-0 left-0 h-screen rounded-r-xl shadow-2xl transition-transform duration-300 ease-in ${getSidebarTranslateClass(isSidebarOpen)}`}>
                 <div className="flex justify-end py-5">
