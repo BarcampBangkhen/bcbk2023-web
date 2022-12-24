@@ -4,7 +4,7 @@ import "flowbite";
 
 export default function Footer() {
   return (
-    <div className='container max-w-7xl mx-auto mt-14 md:mt-32 lg:mt-60 xl:mt-48 py-1 md:p-8 md:pb-16'>
+    <div className='container max-w-7xl mx-auto mt-14 md:mt-32 lg:mt-60 xl:mt-48 md:p-8 md:pb-16'>
         <div className=" bg-Blond20 md:bg-Blond70 w-full px-[82px] py-[30px] md:rounded-lg md:drop-shadow-2xl flex flex-col items-center md:block md:items-start">
             
             {/* block 1 */}
