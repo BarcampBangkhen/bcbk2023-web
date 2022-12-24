@@ -10,12 +10,13 @@ import TimeTable from "./components/TimeTable";
 import Session from "./components/Session";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-
+import MobileSidebar from "./components/Sidebar";
 
 function App():JSX.Element {
   return (
     <React.Fragment>
-      <Navbar />
+      <Navbar/>
+      <MobileSidebar />
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="about" element={<About/>} />

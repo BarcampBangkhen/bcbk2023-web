@@ -3,7 +3,7 @@ import "flowbite";
 
 export default function AboutMobile() {
   return (
-      <div className='container max-w-7xl mx-auto mt-52 md:mt-16' id="myabout">
+      <div className='md:hidden container max-w-7xl mx-auto mt-52 md:mt-16' id="myabout">
             <h1 className="text-3xl text-Falu100 font-bold pl-8">About us</h1>
             
             <div className='px-8'>
