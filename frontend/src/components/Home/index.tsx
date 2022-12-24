@@ -19,9 +19,9 @@ export default function Home() {
               <p className='text-lg mt-1 md:mt-0 font-semibold'>At IUP Building 17,Kasetsart University</p>
             </div>
             
-            <div className='mt-8 ml-12 md:ml-6 lg:ml-32'>
+            <div className='flex justify-center md:justify-start mt-8 md:ml-6 lg:ml-32'>
               <button className='bg-Falu100 py-[6px] px-[12px] font-medium text-white text-xl rounded'>Register now</button>
-              <span className='hidden md:inline-flex translate-y-1 border-2 border-Rusty100 ml-5 py-[4px] px-[10px] items-center rounded-3xl font-medium text-lg'>
+              <span className='hidden md:inline-flex border-2 border-Rusty100 ml-5 py-[4px] px-[10px] items-center rounded-3xl font-medium text-lg'>
                 <img src="./iconhourglass.svg" alt="hourglass" className='mr-2' />
                 100 Days left
               </span>
