@@ -16,7 +16,7 @@ const MobileSidebar = () => {
     function AutomaticCloseDrawer() {
         if (window.outerWidth > 768) {
             if (!isSidebarOpen) {
-                toggleSidebar()
+                collapseSidebar()
             }
         }
     }
