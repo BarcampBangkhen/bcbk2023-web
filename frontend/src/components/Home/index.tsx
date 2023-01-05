@@ -7,11 +7,11 @@ import AboutMobile from '../AboutMobile'
 export default function Home() {  
   return (
     <React.Fragment>
-      <div className='container max-w-7xl mx-auto mt-4 md:mt-16'>
+      <div className='container max-w-7xl mx-auto mt-4 md:mt-20'>
         <div className='flex flex-col-reverse items-center md:items-stretch md:flex-row '>
           
           {/* Scope Left */}
-          <div className=''>
+          <div>
             <img src="./LogoBarcamp.svg" alt="LogoBarcamp" className='hidden md:block md:w-[692px] md:h-[217px]'/>
             
             <div className='mt-4 text-center md:text-start md:mt-12 md:ml-6 lg:ml-32 '>

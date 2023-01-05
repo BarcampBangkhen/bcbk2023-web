@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 
 const MobileSidebar = () => {
@@ -14,30 +14,34 @@ const MobileSidebar = () => {
 
     //* ฟังชันก์ให้ปิด Drawer อัตโนมัติ
     function AutomaticCloseDrawer() {
-        if (window.outerWidth > 768) {
-            if (!isSidebarOpen) {
-                collapseSidebar()
-            }
+        if (window.outerWidth >= 768) {
+            collapseSidebar()
         }
     }
+
 
     const getSidebarTranslateClass = (isSidebarOpen: boolean) => isSidebarOpen ? "" : "-translate-x-full"
 
     const toggleSidebar = () => setSidebarOpen(prevState => !prevState)
 
     const collapseSidebar = () => setSidebarOpen(false)
-
+    
     return (
         <div className="md:hidden">
-            <div className="flex ml-8 mt-4">
-                <button className="w-10" type="button" onClick={toggleSidebar}>
-                    <img src="./iconHamberger.svg" className="object-cover" />
-                </button>
-                <div className="grow flex justify-center">
+            <div className="flex justify-between items-center ml-8 mt-4">
+                
+                <div className='flex justify-center ml-3'>
+                    <button className="w-10 h-16" type="button" onClick={toggleSidebar}>
+                        <img src="./iconHamberger.svg" className="object-cover w-full" />
+                    </button>
+                </div>
+                
+                <div className="flex justify-center">
                     <img src="./LogoBarcamp.svg"></img>
                 </div>
             </div>
-            <div className={`bg-Blond20 w-[300px] fixed top-0 left-0 h-screen rounded-r-xl shadow-2xl transition-transform duration-300 ease-in ${getSidebarTranslateClass(isSidebarOpen)}`}>
+
+            <aside className={`bg-Blond20 w-[300px] z-50 fixed top-0 left-0 h-screen rounded-r-xl shadow-2xl transition-transform duration-300 ease-in ${getSidebarTranslateClass(isSidebarOpen)}`}>
                 <div className="flex justify-end py-5">
                     <button className="mr-5 p-2" onClick={toggleSidebar}>
                         <span>
@@ -54,7 +58,11 @@ const MobileSidebar = () => {
                         <SidebarListItem title="Session" icon="./iconSession.svg" onClick={collapseSidebar} />
                     </ul>
                 </div>
-            </div>
+                
+                <div className="absolute left-2/4 bottom-32 -translate-x-2/4">
+                    <button className='bg-Falu100 w-44 py-[6px] px-[12px] font-medium text-white text-xl rounded'>Register</button>
+                </div>
+            </aside>
         </div>
     )
 }
