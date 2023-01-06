@@ -33,9 +33,9 @@ export default function Navbar():JSX.Element {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/faqs" className="block text-Falu100 text-xl pt-2">
+                <a href="/faqs" className="block text-Falu100 text-xl pt-2">
                   FAQS
-                </NavLink>
+                </a>
               </li>
               <li>
                 <NavLink
