@@ -52,10 +52,11 @@ const MobileSidebar = () => {
 
                 <div>
                     <ul>
-                        <SidebarListItem title="Home" icon="./iconHome.svg" onClick={collapseSidebar} />
-                        <SidebarListItem title="FAQS" icon="./iconFAQS.svg" onClick={collapseSidebar} />
-                        <SidebarListItem title="Timetable" icon="./iconTimetable.svg" onClick={collapseSidebar} />
-                        <SidebarListItem title="Session" icon="./iconSession.svg" onClick={collapseSidebar} />
+                        <SidebarListItem title="Home" icon="./iconHome.svg" onClick={collapseSidebar} id="myhome"/>
+                        <SidebarListItem title="About" icon="./iconAbout.svg" onClick={collapseSidebar} id="myabout"/>
+                        <SidebarListItem title="FAQS" icon="./iconFAQS.svg" onClick={collapseSidebar} id="myfaqs"/>
+                        <SidebarListItem title="Timetable" icon="./iconTimetable.svg" onClick={collapseSidebar} id="mytimetable"/>
+                        <SidebarListItem title="Session" icon="./iconSession.svg" onClick={collapseSidebar} id="mysession"/>
                     </ul>
                 </div>
                 
@@ -70,16 +71,18 @@ const MobileSidebar = () => {
 interface SidebarListItemProps {
     title: string,
     icon: string,
+    id:string
     onClick: () => void
 }
 
-const SidebarListItem = ({ title, icon, onClick }: SidebarListItemProps) => {
-    const path = title == "Home" ? "/" : `/${title.toLowerCase()}`
-
-    return <li className="flex mt-6">
-        <img src={icon} className="ml-12 w-7" />
-        <NavLink to={path} onClick={onClick} className="mb-2 ml-5  text-Falu100 text-xl pt-2 font-semibold">{title}</NavLink>
-    </li>
+const SidebarListItem = ({ title, icon, onClick, id }: SidebarListItemProps) => {
+    
+    return (
+        <li className="flex mt-6">
+            <img src={icon} className="ml-12 w-7" />
+            <a href={`#${id}`}  onClick={onClick} className="mb-2 ml-5 cursor-pointer  text-Falu100 text-xl pt-2 font-semibold">{title}</a>
+        </li>
+    )
 }
 
 export default MobileSidebar
