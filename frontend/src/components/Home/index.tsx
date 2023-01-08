@@ -1,8 +1,10 @@
-import React , { useEffect , useState } from 'react'
+import React from 'react'
 import "flowbite";
 
 import AboutMobile from '../AboutMobile'
-
+import FAQSMobile from '../FAQSMobile'
+import SessionMobile from '../SessionMobile';
+ 
 
 export default function Home() {  
   return (
@@ -37,6 +39,8 @@ export default function Home() {
 
       {/* display page AboutMobile when the size screen < 768px */}
       <AboutMobile />
+      <FAQSMobile/>
+      <SessionMobile/>
     </React.Fragment>
   )
 }

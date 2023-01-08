@@ -4,7 +4,7 @@ import "flowbite";
 export default function Navbar():JSX.Element {
   return (
     <>
-      <nav className="px-3 max-w-[1350px] mx-auto hidden md:flex h-[120px] bg-transparent items-center">
+      <nav className="pl-2 pr-6 max-w-[1350px] mx-auto hidden md:flex h-[120px] bg-transparent items-center">
         <div className="flex justify-around w-full">
           
           {/* Logo Bicycle */}
@@ -33,9 +33,9 @@ export default function Navbar():JSX.Element {
                 </NavLink>
               </li>
               <li>
-                <a href="/faqs" className="block text-Falu100 text-xl pt-2">
+                <NavLink to="/faqs" className="block text-Falu100 text-xl pt-2">
                   FAQS
-                </a>
+                </NavLink>
               </li>
               <li>
                 <NavLink

@@ -1,0 +1,14 @@
+.animationAccordion {
+    animation: displayaccordionBody 0.3s linear;
+}
+
+@keyframes displayaccordionBody {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
