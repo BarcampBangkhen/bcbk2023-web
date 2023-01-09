@@ -20,6 +20,9 @@ module.exports = {
         Neutral02:"#B6B5B5",
         Neutral03:"#656565",
         Neutral04:"#000000"
+      },
+      screens:{
+        screenTable:"850px"
       }
     },
   },
