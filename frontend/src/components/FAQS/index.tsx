@@ -30,12 +30,12 @@ export default function FAQS() {
 
   const checkOpenAccordion = (indexElement:number,dataUpdate:string[]) => {
     if (accordionBody.current[indexElement]?.classList.contains("hidden")){
-      accordionBody.current[indexElement]!.className = "bg-Blond100 rounded-b-lg animationAccordion"
+      accordionBody.current[indexElement]!.className = "bg-Blond100 rounded-b-lg fade"
       accordionBtn.current[indexElement]!.className =  "bg-Blond100 flex items-center justify-between w-full p-5 font-medium border-x border-t border-Neutral01 rounded-t-xl"
       accordionBtn.current[indexElement]!.children[1].classList.add("rotate-180")
 
     }else {
-      accordionBody.current[indexElement]!.className = "hidden bg-Blond100 rounded-b-lg animationAccordion"
+      accordionBody.current[indexElement]!.className = "hidden bg-Blond100 rounded-b-lg fade"
       accordionBtn.current[indexElement]!.className =  "drop-shadow-lg bg-Blond20 flex items-center justify-between w-full p-5 font-medium rounded-xl"
       accordionBtn.current[indexElement]!.children[1].classList.remove("rotate-180")
     }
@@ -82,7 +82,7 @@ export default function FAQS() {
 
       {/* card question */}    
       <div className="hidden fixed top-0 left-0 right-0 bottom-0 z-40 justify-center items-center" ref={cardAskQuestion}>
-        <div className="max-w-[594px] min-h-[320px] bg-Blond20 drop-shadow-[2px_2px_32px_rgba(0,0,0,0.25)] rounded-lg">
+        <div className="max-w-[594px] min-h-[320px] bg-Blond20 drop-shadow-[2px_2px_32px_rgba(0,0,0,0.25)] rounded-lg fadeModal">
           <div className="flex justify-between px-8 pt-8 w-full">
             <span className="text-2xl font-medium">Ask a question <span className="text-red-600">*</span></span>
             <img src="./cross.svg" alt="cross" className="cursor-pointer" onClick={askQuestion}/>
@@ -123,7 +123,7 @@ const ListFAQS = ({refButton , refBody, onclick , indexElement , dataUpdate}:Lis
         </button>
       </h2>
 
-      <div ref={(el) => refBody.current[indexElement] = el} className="hidden bg-Blond100 rounded-b-lg animationAccordion" >
+      <div ref={(el) => refBody.current[indexElement] = el} className="hidden bg-Blond100 rounded-b-lg fade" >
         <div className="pb-3 px-5 font-light border-x border-b border-Neutral01 text-Neutral03 rounded-b-lg">
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta mollitia porro, enim sit sequi voluptates impedit molestias cum veritatis placeat error amet commodi similique autem nam laboriosam delectus, consequatur doloremque!</p>
         </div>

@@ -7,17 +7,17 @@ export default function Footer() {
             
             {/* block 1 */}
              <div className="w-80 text-center mb-8 md:w-auto md:mb-0 md:flex md:justify-between md:items-center">
-                <img src="./LogoBarcamp.svg" className="hidden md:block w-[260px] h-[91px]"></img>
+                <img src="./LogoBarcamp.svg" className="hidden md:block w-[250px] h-[90px]"></img>
                 <div>
                     <p className="text-base">ร่วมสนับสนุน Barcamp Bangkhen ติดต่อ</p>
-                    <p className="text-2xl font-medium md:text-3xl md:font-semibold">barcamp.bkn@gmail.com</p>
+                    <p className="font-medium md:text-2xl lg:text-3xl md:font-semibold">barcamp.bkn@gmail.com</p>
                 </div>
             </div>
             
             <hr className="hidden md:block md:my-14 md:border-black"/>
             
             {/* block 2 */}
-            <div className="block md:grid md:grid-cols-2">
+            <div className="flex">
 
                 <div className='hidden md:block'>
                     <div className='table w-80 h-full'>
@@ -41,8 +41,8 @@ export default function Footer() {
                     </div>
                 </div>
 
-                <div className='w-72 md:w-auto'>
-                    <div className='w-full ml-0 md:ml-36 lg:ml-52 md:justify-start md:justify-self-end'>
+                <div className='w-72 md:w-full flex md:justify-end'>
+                    <div className="w-full md:basis-[270px] lg:basis-[340px]">
                         <p className="text-center font-medium md:text-start text-xl md:font-semibold">Keep in Touch</p>
                         <p className='text-center md:text-start font-medium'>ติดตามข่าวสารของพวกเรา</p>
                         <div className='flex mt-4 justify-center md:justify-start'>

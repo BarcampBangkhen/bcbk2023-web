@@ -1,8 +1,11 @@
-.animationAccordion {
-    animation: displayaccordionBody 0.3s linear;
+.fade {
+    animation: fadeComponent 0.3s linear;
 }
 
-@keyframes displayaccordionBody {
+.fadeModal {
+    animation: fadeComponent 0.1s linear;
+}
+@keyframes fadeComponent {
     from {
         opacity: 0;
     }
@@ -11,4 +14,6 @@
         opacity: 1;
     }
 }
+
+
 

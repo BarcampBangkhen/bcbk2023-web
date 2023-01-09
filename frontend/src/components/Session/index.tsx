@@ -1,6 +1,7 @@
 import { useState , useRef , useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "flowbite";
+import "../../App.css"
 
 
 const tempSessionInfo:CardSessionProps[] = [
@@ -100,7 +101,7 @@ export default function Session() {
 
 			{/* toggle session */}
       <div className="hidden fixed top-0 left-0 right-0 bottom-0 z-40 justify-center items-center" ref={cardCreateSession}>
-					<div className="w-[594px] h-[478px] p-4 bg-Blond20 rounded-lg drop-shadow-[2px_2px_32px_rgba(0,0,0,0.25)]">
+					<div className="w-[594px] h-[478px] p-4 bg-Blond20 rounded-lg drop-shadow-[2px_2px_32px_rgba(0,0,0,0.25)] fadeModal">
 						<div className="flex justify-between px-4 mt-4 w-full">
 							<span className="text-2xl font-medium">Create New Session</span>
 							<img src="./cross.svg" alt="cross" className="cursor-pointer" onClick={toggleSession}/>

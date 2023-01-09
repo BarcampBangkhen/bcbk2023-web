@@ -1,5 +1,6 @@
 import { useState , useRef} from "react";
 import "flowbite";
+import "../../App.css"
 
 
 const tempSessionInfo:CardSessionProps[] = [
@@ -55,7 +56,7 @@ export default function SessionMobile() {
     }
 
   return (
-    <div className='md:hidden container max-w-[1300px] mx-auto mt-36 md:mt-16 px-6 xl:px-0' id="mysession">
+    <div className='md:hidden container max-w-[1300px] mx-auto mt-36 md:mt-16 px-6' id="mysession">
 
         <div>
             <div className="border-b-2 border-Falu100 text-lg mt-4">
@@ -89,7 +90,7 @@ export default function SessionMobile() {
 
 	    {/* toggle session */}
         <div className="hidden fixed top-0 left-0 right-0 bottom-0 z-40 justify-center items-center" ref={cardCreateSession}>
-            <div className="max-w-[380px] h-[470px] p-4 bg-Blond20 rounded-lg drop-shadow-[2px_2px_32px_rgba(0,0,0,0.25)]">
+            <div className="max-w-[380px] h-[470px] p-4 bg-Blond20 rounded-lg drop-shadow-[2px_2px_32px_rgba(0,0,0,0.25)] fadeModal">
                 <div className="flex justify-between px-4 mt-3 w-full">
                     <span className="text-2xl font-medium">Create New Session</span>
                     <img src="./cross.svg" alt="cross" className="cursor-pointer" onClick={toggleSession}/>

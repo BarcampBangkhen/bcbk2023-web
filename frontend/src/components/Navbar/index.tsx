@@ -59,7 +59,7 @@ export default function Navbar():JSX.Element {
           <div className="self-center">
             <button
               type="button"
-              className="py-2 px-6 text-Falu100 text-xl font-medium border border-Falu100 rounded"
+              className="py-2 px-6 text-Falu100 text-xl font-medium border border-Falu100 rounded hover:bg-Falu100 hover:text-white transition-colors duration-75 ease-in"
             >
               Register
             </button>

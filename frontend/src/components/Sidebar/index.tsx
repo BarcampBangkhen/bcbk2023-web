@@ -24,9 +24,13 @@ const MobileSidebar = () => {
     const toggleSidebar = () => setSidebarOpen(prevState => !prevState)
 
     const collapseSidebar = () => setSidebarOpen(false)
+
+    const comebackHome = () => {
+        window.location.href = "#mytop"
+    }
     
     return (
-        <div className="md:hidden">
+        <div className="md:hidden" id='mytop'>
             <div className="flex justify-between items-center ml-8 mt-4">
                 
                 <div className='flex justify-center ml-3'>
@@ -51,7 +55,7 @@ const MobileSidebar = () => {
 
                 <div>
                     <ul>
-                        <SidebarListItem title="Home" icon="./iconHome.svg" onClick={collapseSidebar} id="myhome"/>
+                        <SidebarListItem title="Home" icon="./iconHome.svg" onClick={collapseSidebar} id="mytop"/>
                         <SidebarListItem title="About" icon="./iconAbout.svg" onClick={collapseSidebar} id="myabout"/>
                         <SidebarListItem title="FAQS" icon="./iconFAQS.svg" onClick={collapseSidebar} id="myfaqs"/>
                         <SidebarListItem title="Timetable" icon="./iconTimetable.svg" onClick={collapseSidebar} id="mytimetable"/>
@@ -63,6 +67,12 @@ const MobileSidebar = () => {
                     <button className='bg-Falu100 w-44 py-[6px] px-[12px] font-medium text-white text-xl rounded'>Register</button>
                 </div>
             </aside>
+
+            <div className='fixed bottom-8 right-5 z-40'>
+                <div className='border w-[55px] h-[55px] cursor-pointer bg-Blond100 border-Rusty100 rounded-full flex justify-center items-center' onClick={comebackHome}>
+                    <img src="./iconUp.svg" alt="iconUp" />
+                </div>
+            </div>
         </div>
     )
 }
