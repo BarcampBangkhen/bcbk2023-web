@@ -23,10 +23,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         name: Checkout
-      - name: Authenticate Cloud
-        uses: 'google-github-actions/auth@v1'
+      - id: auth
+        name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v1
         with:
-          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+          credentials_json: ${{ secrets.GOOGLE_CREDENTIALS }}
       - name: Docker Auth
         id: docker-auth
         uses: 'docker/login-action@v1'
