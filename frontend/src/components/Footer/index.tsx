@@ -1,25 +1,23 @@
-import React from 'react'
 import "flowbite";
-
 
 export default function Footer() {
   return (
     <div className='container max-w-7xl mx-auto mt-14 md:mt-32 lg:mt-60 xl:mt-48 md:p-8 md:pb-16'>
-        <div className=" bg-Blond20 md:bg-Blond70 w-full px-[82px] py-[30px] md:rounded-lg md:drop-shadow-2xl flex flex-col items-center md:block md:items-start">
+        <div className=" bg-Blond20 md:bg-Blond70 w-full px-[55px] lg:px-[80px] py-[30px] md:rounded-lg md:drop-shadow-2xl flex flex-col items-center md:block md:items-start">
             
             {/* block 1 */}
              <div className="w-80 text-center mb-8 md:w-auto md:mb-0 md:flex md:justify-between md:items-center">
-                <img src="./LogoBarcamp.svg" className="hidden md:block w-[289px] h-[91px]"></img>
+                <img src="./LogoBarcamp.svg" className="hidden md:block w-[250px] h-[90px]"></img>
                 <div>
                     <p className="text-base">ร่วมสนับสนุน Barcamp Bangkhen ติดต่อ</p>
-                    <p className="text-2xl font-medium md:text-3xl md:font-semibold">barcamp.bkn@gmail.com</p>
+                    <p className="font-medium md:text-2xl lg:text-3xl md:font-semibold">barcamp.bkn@gmail.com</p>
                 </div>
             </div>
             
             <hr className="hidden md:block md:my-14 md:border-black"/>
             
             {/* block 2 */}
-            <div className="block md:grid md:grid-cols-2">
+            <div className="flex">
 
                 <div className='hidden md:block'>
                     <div className='table w-80 h-full'>
@@ -43,8 +41,8 @@ export default function Footer() {
                     </div>
                 </div>
 
-                <div className='w-72 md:w-auto'>
-                    <div className='w-full ml-0 md:ml-36 lg:ml-52 md:justify-start md:justify-self-end'>
+                <div className='w-72 md:w-full flex md:justify-end'>
+                    <div className="w-full md:basis-[270px] lg:basis-[340px]">
                         <p className="text-center font-medium md:text-start text-xl md:font-semibold">Keep in Touch</p>
                         <p className='text-center md:text-start font-medium'>ติดตามข่าวสารของพวกเรา</p>
                         <div className='flex mt-4 justify-center md:justify-start'>
@@ -57,7 +55,7 @@ export default function Footer() {
             </div>
             
             {/* block 3 */}
-            <div className='mt-12 md:mt-4 text-base text-center md:text-start md:text-lg'>
+            <div className='mt-20 md:mt-10 text-base text-center md:text-start md:text-lg'>
                 Copyright © 2022 Barcamp Bangkhen. All Rights Reserved.
             </div>
         </div>
