@@ -21,6 +21,7 @@ function App():JSX.Element {
         <Route path="/" element={<Home/>} />
         <Route path="about" element={<About/>} />
         <Route path="faqs" element={<FAQS/>} />
+        {/* TODO: Change from InProgress to target page */}
         <Route path="timetable" element={<InProgress />} />
         <Route path="session" element={<InProgress />} />
       </Routes>

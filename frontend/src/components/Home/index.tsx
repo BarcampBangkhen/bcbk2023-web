@@ -40,8 +40,9 @@ export default function Home() {
       {/* display page AboutMobile when the size screen < 768px */}
       <AboutMobile />
       <FAQSMobile/>
-      <SessionMobile/>
-      <TimeTableMobile/>
+      {/* TODO: Uncomment to show these pages */}
+      {/* <SessionMobile/>
+      <TimeTableMobile/> */}
     </React.Fragment>
   )
 }
