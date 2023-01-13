@@ -31,3 +31,5 @@ jobs:
           export_default_credentials: true
       - name: Remove images
         run: gcloud artifacts docker images delete $REGION-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$SERVICE --delete-tags
+      - name: Deactivate service
+        run: gcloud run services delete $SERVICE
