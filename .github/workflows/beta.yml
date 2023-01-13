@@ -2,7 +2,7 @@ name: Beta Pipeline
 
 on:
   pull_request:
-    types: [closed]
+    types: [opened, synchronize, reopened]
     branches:
       - main
 
@@ -29,5 +29,32 @@ jobs:
           project_id: barcamp-bangkhen-2023
           service_account_key: ${{ secrets.GOOGLE_CREDENTIALS }}
           export_default_credentials: true
-      - name: Remove images
-        run: gcloud artifacts docker images delete $REGION-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$SERVICE --delete-tags
+      - name: Use gcloud CLI
+        run: |
+          gcloud run deploy $SERVICE \
+          --quiet \
+          --set-env-vars="MONGO_URI=${{ secrets.MONGO_URI }}" \
+          --region $REGION \
+          --source . \
+          --project $PROJECT_ID \
+          --labels "commit-sha=${{ github.sha }}" \
+          --service-account ${{ secrets.GCP_SERVICE_ACCOUNT }}
+      - name: Config policy to allow unauthenticated
+        run: |
+          gcloud run services add-iam-policy-binding $SERVICE \
+          --quiet \
+          --region $REGION \
+          --member="allUsers" \
+          --role="roles/run.invoker"
+      - name: Get Service URL
+        id: service-url
+        run: |
+          echo "::set-output name=url::$(gcloud run services describe $SERVICE --region $REGION --format 'value(status.url)')"
+      - name: Notify update in PR
+        uses: thollander/actions-comment-pull-request@v1
+        if: success() && github.event.action == 'opened'
+        with:
+          message: |
+            This exercise is already in the server
+            URL: ${{ steps.service-url.outputs.url }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
