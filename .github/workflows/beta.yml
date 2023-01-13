@@ -51,6 +51,5 @@ jobs:
         if: success() && github.event.action == 'opened'
         with:
           message: |
-            This exercise is already in the server
-            URL: ${{ steps.service-url.outputs.url }}
+            Beta URL: ${{ steps.service-url.outputs.url }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
