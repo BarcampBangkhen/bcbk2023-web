@@ -14,7 +14,7 @@ env:
   REGION: asia-southeast1
 
 jobs:
-  deploy:
+  remove:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
