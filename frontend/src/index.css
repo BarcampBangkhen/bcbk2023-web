@@ -5,7 +5,7 @@
 
 body{
       font-family: 'Kanit', sans-serif;
-      background-image: url("./backgroundDesktop.svg");
+      background-image: url("/backgroundDesktop.svg");
       background-position: left top;
       background-repeat: no-repeat;
       background-size: cover;
@@ -17,6 +17,6 @@ body{
 
 @media screen and (max-width:768px) {
       body{
-            background-image: url("./backgroundMobile.svg");
+            background-image: url("/backgroundMobile.svg");
       }
 }

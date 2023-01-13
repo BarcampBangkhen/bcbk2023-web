@@ -1,0 +1,60 @@
+name: Beta Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: ${{ github.ref_name }}
+  cancel-in-progress: true
+
+env:
+  PROJECT_ID: barcamp-bangkhen-2023
+  GAR_LOCATION: asia-southeast1
+  REPOSITORY: cloud-run-source-deploy
+  SERVICE: bcbk2023-web
+  REGION: asia-southeast1
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: Production
+    steps:
+      - uses: actions/checkout@v3
+        name: Checkout
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v0
+        with:
+          project_id: barcamp-bangkhen-2023
+          service_account_key: ${{ secrets.GOOGLE_CREDENTIALS }}
+          export_default_credentials: true
+      - name: Use gcloud CLI
+        run: |
+          gcloud run deploy $SERVICE \
+          --quiet \
+          --set-env-vars="MONGO_URI=${{ secrets.MONGO_URI }}" \
+          --region $REGION \
+          --source . \
+          --project $PROJECT_ID \
+          --labels "commit-sha=${{ github.sha }}" \
+          --service-account ${{ secrets.GCP_SERVICE_ACCOUNT }}
+      - name: Config policy to allow unauthenticated
+        run: |
+          gcloud run services add-iam-policy-binding $SERVICE \
+          --quiet \
+          --region $REGION \
+          --member="allUsers" \
+          --role="roles/run.invoker"
+      - name: Get Service URL
+        id: service-url
+        run: |
+          echo "::set-output name=url::$(gcloud run services describe $SERVICE --region $REGION --format 'value(status.url)')"
+      - name: Notify update in PR
+        uses: thollander/actions-comment-pull-request@v1
+        if: success() && github.event.action == 'opened'
+        with:
+          message: |
+            This exercise is already in the server
+            URL: ${{ steps.service-url.outputs.url }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
