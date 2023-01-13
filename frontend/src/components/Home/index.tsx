@@ -41,8 +41,8 @@ export default function Home() {
       <AboutMobile />
       <FAQSMobile/>
       {/* TODO: Uncomment to show these pages */}
-      {/* <SessionMobile/>
-      <TimeTableMobile/> */}
+      <SessionMobile/>
+      <TimeTableMobile/>
     </React.Fragment>
   )
 }
