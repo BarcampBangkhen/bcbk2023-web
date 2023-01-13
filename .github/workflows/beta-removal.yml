@@ -28,4 +28,4 @@ jobs:
       - name: Remove images
         run: gcloud artifacts docker images delete $REGION-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$SERVICE --delete-tags
       - name: Deactivate service
-        run: gcloud run services delete $SERVICE
+        run: gcloud run services delete $SERVICE --region $REGION
