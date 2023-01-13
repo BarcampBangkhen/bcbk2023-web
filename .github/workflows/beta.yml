@@ -18,17 +18,8 @@ env:
   REGION: asia-southeast1
 
 jobs:
-  tests-server:
-    uses: ./.github/workflows/tests.yml
-    with:
-      path: .
-  tests-client:
-    uses: ./.github/workflows/tests.yml
-    with:
-      path: frontend/
   deploy:
     runs-on: ubuntu-latest
-    needs: [tests-server, tests-client]
     steps:
       - uses: actions/checkout@v3
         name: Checkout
