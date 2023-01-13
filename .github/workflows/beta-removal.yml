@@ -1,0 +1,33 @@
+name: Post Beta Pipeline
+
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - main
+
+concurrency:
+  group: ${{ github.ref_name }}
+  cancel-in-progress: true
+
+env:
+  PROJECT_ID: barcamp-bangkhen-2023
+  GAR_LOCATION: asia-southeast1
+  REPOSITORY: cloud-run-source-deploy
+  SERVICE: bcbk2023-web-${{ github.head_ref }}
+  REGION: asia-southeast1
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        name: Checkout
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v0
+        with:
+          project_id: barcamp-bangkhen-2023
+          service_account_key: ${{ secrets.GOOGLE_CREDENTIALS }}
+          export_default_credentials: true
+      - name: Remove images
+        run: gcloud artifacts docker images delete $REGION-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$SERVICE --delete-tags
