@@ -1,8 +1,7 @@
 name: Beta Pipeline
 
 on:
-  pull_request:
-    types: [opened, synchronize, reopened]
+  push:
     branches:
       - main
 
@@ -14,7 +13,7 @@ env:
   PROJECT_ID: barcamp-bangkhen-2023
   GAR_LOCATION: asia-southeast1
   REPOSITORY: cloud-run-source-deploy
-  SERVICE: bcbk2023-web-${{ github.head_ref }}
+  SERVICE: bcbk2023-web
   REGION: asia-southeast1
 
 jobs:
@@ -29,6 +28,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: [tests-server, tests-client]
+    environment: Production
     steps:
       - uses: actions/checkout@v3
         name: Checkout
