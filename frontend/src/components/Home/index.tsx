@@ -52,14 +52,14 @@ export default function Home() {
     return nextInterval
   }
 
-  const getEventDate = () => {
-    const momentInput: moment.MomentInput = new Date(2023, 1, 18)
-    setEventDate(moment(momentInput).tz('Asia/Bangkok').toDate())
-  }
+  // const getEventDate = () => {
+  //   const momentInput: moment.MomentInput = new Date(2023, 1, 18)
+  //   setEventDate(moment(momentInput).tz('Asia/Bangkok').toDate())
+  // }
 
-  useEffect(() => {
-    getEventDate()
-  }, [])
+  // useEffect(() => {
+  //   getEventDate()
+  // }, [])
 
   useEffect(() => {
     const intervalTime = getCountdown()
