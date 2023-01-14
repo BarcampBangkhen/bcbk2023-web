@@ -17,6 +17,7 @@ app.use(express.static(staticPath))
 const apiRouter = Router()
 apiRouter.use('/faq', faqRouter)
 
+app.set('view engine', 'ejs')
 app.use('/api', cors(), apiRouter)
 
 app.get('*', (req: Request, res: Response) => {

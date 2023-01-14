@@ -4,10 +4,14 @@ import {
   AnswerAskedQuestionInput,
   CreateAskedQuestionInput
 } from '../schemas/faq.schema'
+import path from 'path'
+import { Admin } from '../models/User.model'
 
 export const GetAllQuestions = async (req: Request, res: Response) => {
   const questions = await AskedQuestion.find()
-  res.status(200).json(questions)
+  res.render(path.join(__dirname, '../..', 'views/faq'), {
+    questions: questions
+  })
 }
 
 export const GetAllAnsweredQuestions = async (req: Request, res: Response) => {
@@ -43,11 +47,15 @@ export const PatchQuestion = async (
   >,
   res: Response
 ) => {
+  const admin = await Admin.findOne({
+    credential: req.headers.authorization?.replace('Basic ', '')
+  })
+  if (admin === null) return res.status(401).json({})
   const faq = await AskedQuestion.findById(req.body.id).exec()
   if (faq !== null) {
     faq.answer = req.body.answer
     const item = await faq.save()
-    res.status(200).json(item)
+    return res.status(200).json({})
   }
-  return res.status(400).json({})
+  return res.status(400)
 }
