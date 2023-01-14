@@ -40,12 +40,18 @@ export default function Footer() {
               </div>
               <div className="table-row-group">
                 <div className="table-row text-xl font-medium text-Falu100">
-                  <p className="table-cell pt-6 ">About</p>
-                  <p className="table-cell pt-6 ">Timetable</p>
+                  <p className="table-cell pt-6 ">
+                    <a href="/about">About</a>
+                  </p>
+                  <p className="table-cell pt-6 ">
+                    <a href="/timetable">Timetable</a>
+                  </p>
                 </div>
 
                 <div className="table-row text-xl font-medium text-Falu100">
-                  <p className="table-cell pt-1 ">FAQs</p>
+                  <p className="table-cell pt-1 ">
+                    <a href="/faqs">FAQs</a>
+                  </p>
                 </div>
               </div>
             </div>
