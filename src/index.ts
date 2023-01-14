@@ -10,10 +10,6 @@ const port = Constant.Port
 const staticPath = path.normalize(
   path.join(__dirname, '..', 'frontend', 'build')
 )
-const corsOptions = {
-  origin: 'localhost',
-  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-}
 
 app.use(express.json())
 app.use(express.static(staticPath))
@@ -21,7 +17,7 @@ app.use(express.static(staticPath))
 const apiRouter = Router()
 apiRouter.use('/faq', faqRouter)
 
-app.use('/api', cors(corsOptions), apiRouter)
+app.use('/api', cors(), apiRouter)
 
 app.get('*', (req: Request, res: Response) => {
   res.sendFile(path.join(staticPath, 'index.html'))
