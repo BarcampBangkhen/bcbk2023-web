@@ -5,8 +5,8 @@ import AboutMobile from '../AboutMobile'
 import FAQSMobile from '../FAQSMobile'
 import TimeTableMobile from '../TimeTableMobile'
 import pluralize, { plural } from 'pluralize'
-import { RegistrationLink } from '../../Constant'
-import { getDateInBangkokTimezone } from '../Utils'
+import { EventDate, RegistrationLink } from '../../Constant'
+import { displaydateFormat, getDateInBangkokTimezone } from '../Utils'
 
 const oneSecond = 1000
 const oneMinute = 60 * oneSecond
@@ -14,24 +14,11 @@ const oneHour = 60 * oneMinute
 const oneDay = 24 * oneHour
 
 export default function Home() {
-  const [eventDate, setEventDate] = useState<Date>(
-    getDateInBangkokTimezone(new Date(2023, 1, 18))
-  )
   const [remaining, setRemaining] = useState<string>('')
-
-  const displayEventDate = () => {
-    const dateString =
-      eventDate.getDate() +
-      ' ' +
-      eventDate.toLocaleString('default', { month: 'long' }) +
-      ' ' +
-      eventDate.getFullYear()
-    return dateString
-  }
 
   const computeRemainingDays = () => {
     const bangkokDate = getDateInBangkokTimezone(new Date())
-    const diffDate = eventDate.getTime() - bangkokDate.getTime()
+    const diffDate = EventDate.getTime() - bangkokDate.getTime()
     const diffDays = Math.max(0, Math.floor(diffDate / oneDay))
     if (diffDays > 0) return pluralize('day', diffDays, true) + ' left'
     const diffHours = Math.max(0, Math.floor(diffDate / oneHour))
@@ -80,7 +67,7 @@ export default function Home() {
 
             <div className="mt-4 text-center md:text-start md:mt-12 md:ml-6 lg:ml-32">
               <p className="text-4xl text-Falu100 font-bold md:text-black md:text-xl md:font-semibold">
-                {displayEventDate()}
+                {displaydateFormat(EventDate)}
               </p>
               <p className="text-lg mt-1 md:mt-0 font-semibold">
                 At IUP Building (17), Kasetsart University

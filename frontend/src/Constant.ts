@@ -1,3 +1,5 @@
+import { getDateInBangkokTimezone } from "./components/Utils"
+
 export const RegistrationLink = 'https://forms.gle/MgYTTEqLZHPz7ZL17'
 export const FacebookProfile = 'https://www.facebook.com/Barcampbangkhen'
 export const TwitterProfile = 'https://twitter.com/BarcampBangkhen'
@@ -11,3 +13,4 @@ export const ParticipationDescription = `- ผู้ร่วมงานทุ�
 และแต่ละหัวข้อจะถูกจัดขึ้นที่ห้องไหน เวลาใด
 - ผู้ร่วมงานสามารถเลือกหัวข้อพูดที่ต้องการฟังได้ตามความสนใจตัวเอง`
 export const ApiBaseUrl = import.meta.env.VITE_API_BASE_PATH || '/api'
+export const EventDate = getDateInBangkokTimezone(new Date(2023, 1, 18))
