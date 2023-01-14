@@ -44,7 +44,6 @@ export default function Home() {
   useEffect(() => {
     const intervalTime = getCountdown()
     if (intervalTime === 0) return () => {}
-    console.log(intervalTime)
     const remainingInterval = setInterval(() => {
       getCountdown()
     }, intervalTime)
