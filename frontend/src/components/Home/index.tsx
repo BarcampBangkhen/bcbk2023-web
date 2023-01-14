@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import 'flowbite'
-import * as moment from 'moment-timezone'
 
 import AboutMobile from '../AboutMobile'
 import FAQSMobile from '../FAQSMobile'
 import TimeTableMobile from '../TimeTableMobile'
 import pluralize, { plural } from 'pluralize'
 import { RegistrationLink } from '../../Constant'
+import { getDateInBangkokTimezone } from '../Utils'
 
 const oneSecond = 1000
 const oneMinute = 60 * oneSecond
@@ -14,7 +14,9 @@ const oneHour = 60 * oneMinute
 const oneDay = 24 * oneHour
 
 export default function Home() {
-  const [eventDate, setEventDate] = useState<Date>(new Date(2023, 1, 18))
+  const [eventDate, setEventDate] = useState<Date>(
+    getDateInBangkokTimezone(new Date(2023, 1, 18))
+  )
   const [remaining, setRemaining] = useState<string>('')
 
   const displayEventDate = () => {
@@ -28,8 +30,8 @@ export default function Home() {
   }
 
   const computeRemainingDays = () => {
-    const currentDateInBangkok = moment().tz('Asia/Bangkok').toDate()
-    const diffDate = eventDate.getTime() - currentDateInBangkok.getTime()
+    const bangkokDate = getDateInBangkokTimezone(new Date())
+    const diffDate = eventDate.getTime() - bangkokDate.getTime()
     const diffDays = Math.max(0, Math.floor(diffDate / oneDay))
     if (diffDays > 0) return pluralize('day', diffDays, true) + ' left'
     const diffHours = Math.max(0, Math.floor(diffDate / oneHour))
@@ -51,15 +53,6 @@ export default function Home() {
     else if (computedRemaining.includes('second')) nextInterval = oneSecond
     return nextInterval
   }
-
-  // const getEventDate = () => {
-  //   const momentInput: moment.MomentInput = new Date(2023, 1, 18)
-  //   setEventDate(moment(momentInput).tz('Asia/Bangkok').toDate())
-  // }
-
-  // useEffect(() => {
-  //   getEventDate()
-  // }, [])
 
   useEffect(() => {
     const intervalTime = getCountdown()
