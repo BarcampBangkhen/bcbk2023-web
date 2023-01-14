@@ -4,7 +4,7 @@ import 'flowbite'
 import { displaydateFormat } from '../Utils'
 import { EventDate } from '../../Constant'
 
-const timetableData: TimeItemProp[] = [
+export const timetableData: TimeItemProp[] = [
   {
     period: '08.00 - 09.30',
     target: 'ลงทะเบียนเข้าร่วมกิจกรรม และ เสนอหัวข้อบรรยาย',
@@ -21,42 +21,42 @@ const timetableData: TimeItemProp[] = [
     icons: './TableIconThree.svg'
   },
   {
-    period: '10.50 - 11.10',
+    period: '10.05 - 10.55',
     target: 'รอบบรรยายที่ 1',
     icons: './TableIconFive.svg'
   },
   {
-    period: '11.10 - 11.35',
+    period: '11.00 - 11.50',
     target: 'รอบบรรยายที่ 2',
     icons: './TableIconFive.svg'
   },
   {
-    period: '12.05 - 13.00',
+    period: '11.50 - 12.40',
     target: 'รับประทานอาหารเที่ยง ณ โรงอาหาร IUP',
     icons: './TableIconSix.svg'
   },
   {
-    period: '13.00 - 13.25',
+    period: '12.45 - 13.35',
     target: 'รอบบรรยายที่ 3',
     icons: './TableIconFive.svg'
   },
   {
-    period: '13.30 - 13.55',
+    period: '13.40 - 14.30',
     target: 'รอบบรรยายที่ 4',
     icons: './TableIconFive.svg'
   },
   {
-    period: '14.00 - 14.25',
+    period: '14.35 - 15.25',
     target: 'รอบบรรยายที่ 5',
     icons: './TableIconFive.svg'
   },
   {
-    period: '14.30 - 14.55',
+    period: '15.30 - 16.20',
     target: 'รอบบรรยายที่ 6',
     icons: './TableIconFive.svg'
   },
   {
-    period: '15.00 - 15.30',
+    period: '16.20 - 17.20',
     target: 'After Party',
     icons: './TableIconThree.svg'
   }
@@ -89,9 +89,12 @@ export default function TimeTable() {
           <h5 className="font-normal text-2xl">
             {displaydateFormat(EventDate)}
           </h5>
-          <button className="border border-Falu100 py-[6px] px-[15px] font-medium text-Falu100 text-xl rounded hover:bg-Falu100 hover:text-white transition-colors duration-75 ease-in">
+          <a
+            className="border border-Falu100 py-[6px] px-[15px] font-medium text-Falu100 text-xl rounded hover:bg-Falu100 hover:text-white transition-colors duration-75 ease-in"
+            href="https://calendar.google.com/calendar/ical/c_4179edfb1c5c58f507cd872efd2e53e3db535d0c596052e1ca2f51938d3727cd%40group.calendar.google.com/public/basic.ics"
+          >
             Add to calendar
-          </button>
+          </a>
         </div>
 
         <div className="mt-8">
