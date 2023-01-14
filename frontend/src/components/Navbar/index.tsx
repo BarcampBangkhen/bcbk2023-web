@@ -1,12 +1,12 @@
-import { NavLink } from "react-router-dom";
-import "flowbite";
+import { NavLink } from 'react-router-dom'
+import 'flowbite'
+import { RegistrationLink } from '../../Constant'
 
-export default function Navbar():JSX.Element {
+export default function Navbar(): JSX.Element {
   return (
     <>
       <nav className="pl-2 pr-6 max-w-[1350px] mx-auto hidden md:flex h-[120px] bg-transparent items-center">
         <div className="flex justify-around w-full">
-          
           {/* Logo Bicycle */}
           <span className="hidden md:flex items-center flex-shrink-0">
             <img
@@ -45,27 +45,21 @@ export default function Navbar():JSX.Element {
                   Timetable
                 </NavLink>
               </li>
-              <li>
-                <NavLink
-                  to="/session"
-                  className="block text-Falu100 text-xl pt-2"
-                >
-                  Session
-                </NavLink>
-              </li>
             </ul>
           </div>
 
           <div className="self-center">
-            <button
-              type="button"
+            <a
+              href={RegistrationLink}
+              target="_blank"
+              rel="Registration"
               className="py-2 px-6 text-Falu100 text-xl font-medium border border-Falu100 rounded hover:bg-Falu100 hover:text-white transition-colors duration-75 ease-in"
             >
               Register
-            </button>
+            </a>
           </div>
         </div>
       </nav>
     </>
-  );
+  )
 }

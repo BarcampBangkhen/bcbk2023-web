@@ -22,8 +22,7 @@ function App():JSX.Element {
         <Route path="about" element={<About/>} />
         <Route path="faqs" element={<FAQS/>} />
         {/* TODO: Change from InProgress to target page */}
-        <Route path="timetable" element={<TimeTable />} />
-        <Route path="session" element={<Session />} />
+        <Route path="timetable" element={<InProgress />} />
       </Routes>
       <Footer/>
     </React.Fragment>

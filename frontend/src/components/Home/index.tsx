@@ -1,48 +1,135 @@
-import React from 'react'
-import "flowbite";
+import React, { useEffect, useState } from 'react'
+import 'flowbite'
+import * as moment from 'moment-timezone'
 
 import AboutMobile from '../AboutMobile'
 import FAQSMobile from '../FAQSMobile'
-import SessionMobile from '../SessionMobile';
-import TimeTableMobile from '../TimeTableMobile';
+import TimeTableMobile from '../TimeTableMobile'
+import pluralize, { plural } from 'pluralize'
+import { RegistrationLink } from '../../Constant'
 
-export default function Home() {  
+const oneSecond = 1000
+const oneMinute = 60 * oneSecond
+const oneHour = 60 * oneMinute
+const oneDay = 24 * oneHour
+
+export default function Home() {
+  const [eventDate, setEventDate] = useState<Date>(new Date(2023, 1, 18))
+  const [remaining, setRemaining] = useState<string>('')
+
+  const displayEventDate = () => {
+    const dateString =
+      eventDate.getDate() +
+      ' ' +
+      eventDate.toLocaleString('default', { month: 'long' }) +
+      ' ' +
+      eventDate.getFullYear()
+    return dateString
+  }
+
+  const computeRemainingDays = () => {
+    const currentDateInBangkok = moment().tz('Asia/Bangkok').toDate()
+    const diffDate = eventDate.getTime() - currentDateInBangkok.getTime()
+    const diffDays = Math.max(0, Math.floor(diffDate / oneDay))
+    if (diffDays > 0) return pluralize('day', diffDays, true) + ' left'
+    const diffHours = Math.max(0, Math.floor(diffDate / oneHour))
+    if (diffHours > 0) return pluralize('hour', diffHours, true) + ' left'
+    const diffMinutes = Math.max(0, Math.floor(diffDate / oneMinute))
+    if (diffMinutes > 0) return pluralize('minute', diffMinutes, true) + ' left'
+    const diffSeconds = Math.max(0, Math.floor(diffDate / oneSecond))
+    if (diffSeconds > 0) return pluralize('second', diffSeconds, true) + ' left'
+    return 'Event started'
+  }
+
+  const getCountdown = () => {
+    const computedRemaining = computeRemainingDays()
+    setRemaining(computedRemaining)
+    let nextInterval = 0
+    if (computedRemaining.includes('day')) nextInterval = oneDay
+    else if (computedRemaining.includes('hour')) nextInterval = oneHour
+    else if (computedRemaining.includes('minute')) nextInterval = oneMinute
+    else if (computedRemaining.includes('second')) nextInterval = oneSecond
+    return nextInterval
+  }
+
+  const getEventDate = () => {
+    const momentInput: moment.MomentInput = new Date(2023, 1, 18)
+    setEventDate(moment(momentInput).tz('Asia/Bangkok').toDate())
+  }
+
+  useEffect(() => {
+    getEventDate()
+  }, [])
+
+  useEffect(() => {
+    const intervalTime = getCountdown()
+    if (intervalTime === 0) return () => {}
+    console.log(intervalTime)
+    const remainingInterval = setInterval(() => {
+      getCountdown()
+    }, intervalTime)
+    return () => {
+      clearInterval(remainingInterval)
+    }
+  }, [remaining])
+
   return (
     <React.Fragment>
-      <div className='container max-w-7xl mx-auto mt-4 md:mt-20'>
-        <div className='flex flex-col-reverse items-center md:items-stretch md:flex-row '>
-          
+      <div className="container max-w-7xl mx-auto mt-4 md:mt-20">
+        <div className="flex flex-col-reverse items-center md:items-stretch md:flex-row ">
           {/* Scope Left */}
-          <div className='ml-4'>
-            <img src="./LogoBarcamp.svg" alt="LogoBarcamp" className='hidden md:block md:w-[692px] md:h-[217px]'/>
-            
-            <div className='mt-4 text-center md:text-start md:mt-12 md:ml-6 lg:ml-32'>
-              <p className='text-4xl text-Falu100 font-bold md:text-black md:text-xl md:font-semibold'>11 February 2023</p>
-              <p className='text-lg mt-1 md:mt-0 font-semibold'>At IUP Building 17,Kasetsart University</p>
+          <div className="ml-4">
+            <img
+              src="./LogoBarcamp.svg"
+              alt="LogoBarcamp"
+              className="hidden md:block md:w-[692px] md:h-[217px]"
+            />
+
+            <div className="mt-4 text-center md:text-start md:mt-12 md:ml-6 lg:ml-32">
+              <p className="text-4xl text-Falu100 font-bold md:text-black md:text-xl md:font-semibold">
+                {displayEventDate()}
+              </p>
+              <p className="text-lg mt-1 md:mt-0 font-semibold">
+                At IUP Building (17), Kasetsart University
+              </p>
             </div>
-            
-            <div className='flex justify-center md:justify-start mt-8 md:ml-6 lg:ml-32'>
-              <button className='bg-Falu100 py-[6px] px-[12px] font-medium text-white text-xl rounded'>Register now</button>
-              <span className='hidden md:inline-flex border-2 border-Rusty100 ml-5 py-[4px] px-[10px] items-center rounded-3xl font-medium text-lg'>
-                <img src="./iconhourglass.svg" alt="hourglass" className='mr-2' />
-                100 Days left
+
+            <div className="flex justify-center md:justify-start mt-8 md:ml-6 lg:ml-32">
+              <a
+                href={RegistrationLink}
+                target="_blank"
+                rel="Registration"
+                className="bg-Falu100 py-[6px] px-[12px] font-medium text-white text-xl rounded"
+              >
+                Register now
+              </a>
+              <span className="hidden md:inline-flex border-2 border-Rusty100 ml-5 py-[4px] px-[15px] items-center rounded-3xl font-medium text-lg">
+                <img
+                  src="./iconhourglass.svg"
+                  alt="hourglass"
+                  className="mr-2"
+                />
+                {remaining}
               </span>
             </div>
           </div>
-          
+
           {/* Scope Right */}
-          <div className='w-[385px] h-[240px] md:w-[825px] md:h-[514px]'>
-            <img src="./Logo.svg" alt="LogoBarcamp" className='w-full md:ml-5'/>
+          <div className="w-[385px] h-[240px] md:w-[825px] md:h-[514px]">
+            <img
+              src="./Logo.svg"
+              alt="LogoBarcamp"
+              className="w-full md:ml-5"
+            />
           </div>
         </div>
       </div>
 
       {/* display page AboutMobile when the size screen < 768px */}
       <AboutMobile />
-      <FAQSMobile/>
+      <FAQSMobile />
       {/* TODO: Uncomment to show these pages */}
-      <SessionMobile/>
-      <TimeTableMobile/>
+      <TimeTableMobile />
     </React.Fragment>
   )
 }
