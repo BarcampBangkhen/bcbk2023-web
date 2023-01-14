@@ -46,7 +46,6 @@ export default function Footer() {
 
                 <div className="table-row text-xl font-medium text-Falu100">
                   <p className="table-cell pt-1 ">FAQs</p>
-                  <p className="table-cell pt-1 ">Session</p>
                 </div>
               </div>
             </div>
