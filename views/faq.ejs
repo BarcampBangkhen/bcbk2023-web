@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>FAQs Manage</title>
+    <style>
+      body {
+        padding-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>FAQs Management</h1>
+    <div style="display: flex"></div>
+    <table style="width: 100%; padding-left: 10px; padding-right: 10px">
+      <tr style="height: 50px; display: flex; width: 50%">
+        <th style="width: 35%">Question</th>
+        <th style="width: 45%">Current Answer</th>
+        <th>Action</th>
+      </tr>
+      <% questions.forEach((faq) => { %>
+      <tr style="display: flex; align-items: center">
+        <td style="width: 20%">
+          <%= faq.question %><input
+            type="text"
+            name="id"
+            id="<%= faq._id %> "
+            value="<%= faq._id %>"
+            style="display: none"
+            disabled
+          />
+        </td>
+        <td>
+          <textarea
+            type="text"
+            name="answer"
+            id="<%= faq._id %>"
+            style="margin-right: 50px"
+            rows="6"
+            cols="50"
+          >
+<%= faq.answer %></textarea
+          >
+        </td>
+        <td>
+          <button
+            type="submit"
+            id="<%= faq._id %>"
+            onclick="sendAnswer(this.id)"
+          >
+            Submit
+          </button>
+        </td>
+      </tr>
+      <% }) %>
+    </table>
+
+    <script>
+      function getElementByXpath(path) {
+        return document.evaluate(
+          path,
+          document,
+          null,
+          XPathResult.FIRST_ORDERED_NODE_TYPE,
+          null
+        ).singleNodeValue
+      }
+
+      function sendAnswer(selectedId) {
+        const answer = getElementByXpath(
+          `//*[@id="${selectedId}" and @name="answer"]`
+        )
+        if (answer.value === '') {
+          alert('Answer cannot be empty')
+          return
+        }
+        var credentials = prompt('Please enter your password')
+        if (credentials == null) return
+        var base64Credentials = btoa(credentials)
+        var authHeader = 'Basic ' + base64Credentials
+        fetch('/api/faq/manage', {
+          method: 'PATCH',
+          headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+            Authorization: authHeader
+          },
+          body: JSON.stringify({
+            id: selectedId,
+            answer: answer.value
+          })
+        })
+          .then((res) => {
+            if (res.status === 401) alert('Answer submission failed')
+          })
+          .catch((err) => {
+            alert('Answer submission failed')
+          })
+      }
+    </script>
+  </body>
+</html>

@@ -1,4 +1,5 @@
-import "flowbite";
+import 'flowbite'
+import { ParticipationDescription, WhatIsBarcampDescription } from '../../Constant'
 
 export default function AboutMobile() {
   return (
@@ -14,25 +15,15 @@ export default function AboutMobile() {
           <h2 className="text-center text-2xl font-bold mb-6">
             What is <span className="text-Rusty100">Barcamp</span> ?
           </h2>
-          <p className="font-bold">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat
-            dolor vitae omnis amet rerum nulla consectetur! Eaque harum
-            quibusdam delectus eos nostrum nisi, fugit quis ducimus dolor?
-            Voluptas, nesciunt, quibusdam officia fugiat in inventore quidem,
-            vero numquam possimus eveniet maiores.
-          </p>
+          <p>{WhatIsBarcampDescription}</p>
         </div>
         <div className="bg-Blond20 mt-6 p-12 pl-14 max-w-[390px] rounded-3xl drop-shadow-lg">
           <h2 className="text-center text-2xl font-bold mb-6">Participants</h2>
-          <p className="font-bold">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos
-            voluptatum blanditiis perspiciatis in repellendus officiis maxime
-            distinctio minima porro et, tenetur enim maiores amet itaque cum!
-            Iusto aperiam officia, officiis commodi nobis dolor qui,
-            necessitatibus, fugiat dolorum natus quia dignissimos?
+          <p>
+            {ParticipationDescription}
           </p>
         </div>
       </div>
     </div>
-  );
+  )
 }

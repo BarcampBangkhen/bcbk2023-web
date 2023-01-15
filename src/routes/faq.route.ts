@@ -10,9 +10,9 @@ const router = Router()
 
 router.get('/', GetAllAnsweredQuestions)
 
-router.get('/manage', GetAllQuestions)
+router.put('/', PutQuestion)
 
-router.put('/manage', PutQuestion)
+router.get('/manage', GetAllQuestions)
 
 router.patch('/manage', PatchQuestion)
 
