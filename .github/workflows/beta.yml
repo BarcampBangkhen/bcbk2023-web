@@ -34,7 +34,8 @@ jobs:
           --source . \
           --project $PROJECT_ID \
           --labels "commit-sha=${{ github.sha }}" \
-          --service-account ${{ secrets.GCP_SERVICE_ACCOUNT }}
+          --service-account ${{ secrets.GCP_SERVICE_ACCOUNT }} \
+          --service-yaml .gcr/service.yaml
       - name: Config policy to allow unauthenticated
         run: |
           gcloud run services add-iam-policy-binding $SERVICE \

@@ -1,0 +1,19 @@
+apiVersion: run.googleapis.com/v1
+kind: Service
+metadata:
+  name: my-service
+spec:
+  template:
+    spec:
+      containers:
+        - name: my-container
+          image: gcr.io/my-project/my-image
+          ports:
+            - name: http
+              containerPort: 8080
+      # Add the following field to your Service
+      rewrite:
+        # Redirect all non-www requests to www
+        - action: redirect
+          regex: ^(.*)$
+          uri: https://www.$1
