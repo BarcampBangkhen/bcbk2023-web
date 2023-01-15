@@ -10,6 +10,7 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import MobileSidebar from './components/Sidebar'
 import InProgress from './components/InProgress'
+import NotFound from './components/NotFound'
 
 function App(): JSX.Element {
   return (
@@ -20,8 +21,8 @@ function App(): JSX.Element {
         <Route path="/" element={<Home />} />
         <Route path="about" element={<About />} />
         <Route path="faqs" element={<FAQS />} />
-        {/* TODO: Change from InProgress to target page */}
         <Route path="timetable" element={<TimeTable />} />
+        <Route path='*' element={<NotFound />}/>
       </Routes>
       <Footer />
     </React.Fragment>
