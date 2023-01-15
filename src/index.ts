@@ -4,6 +4,7 @@ import { connect, set } from 'mongoose'
 import { Constant } from './constant'
 import path from 'path'
 import cors from 'cors'
+import favicon from 'serve-favicon'
 
 const app = express()
 const port = Constant.Port
@@ -12,6 +13,7 @@ const staticPath = path.normalize(
 )
 
 app.use(express.json())
+app.use(favicon(path.join(__dirname, '..', 'views/images/favicon.ico')))
 app.use(express.static(staticPath))
 
 const apiRouter = Router()
