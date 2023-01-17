@@ -8,11 +8,13 @@ import FaqList from '../FaqList'
 import axios from 'axios'
 import { ApiBaseUrl } from '../../Constant'
 import { IFaq } from '../../models/Faq'
+import { useNavigate } from 'react-router-dom'
 
 export default function FAQSMobile() {
   const cardAskQuestion = useRef<HTMLDivElement>(null)
   const [questions, setQuestions] = useState<IFaq[]>([])
   const [askQuestionValue, setAskQuestionValue] = useState('')
+  const navigate = useNavigate()
 
   const askQuestion = () => {
     cardAskQuestion.current?.classList.toggle('hidden')
@@ -44,6 +46,19 @@ export default function FAQSMobile() {
   useEffect(() => {
     getQuestions()
   }, [])
+
+  useEffect(() => {
+    window.addEventListener('resize', RedirectPath)
+
+    return () => {
+      window.removeEventListener('resize', RedirectPath)
+    }
+  }, [])
+
+  //* ฟังชันก์ให้ redirect ไปยัง path /faqs
+  function RedirectPath() {
+    if (window.outerWidth >= 768) navigate('/faqs')
+  }
 
   return (
     <div className="md:hidden container max-w-7xl mx-auto mt-36" id="myfaqs">

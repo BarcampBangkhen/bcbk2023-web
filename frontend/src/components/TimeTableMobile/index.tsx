@@ -4,9 +4,11 @@ import { displaydateFormat } from '../Utils'
 import { ApiBaseUrl, EventDate } from '../../Constant'
 import axios from 'axios'
 import { ITimetable } from '../../models/TImetable'
+import { useNavigate } from 'react-router-dom'
 
 export default function TimeTableMobile() {
   const [timetableData, setTimetableData] = useState<ITimetable[]>([])
+  const navigate = useNavigate()
 
   const getTimetable = async () => {
     axios
@@ -22,6 +24,20 @@ export default function TimeTableMobile() {
   useEffect(() => {
     getTimetable()
   }, [])
+
+  useEffect(() => {
+    window.addEventListener('resize', RedirectPath)
+
+    return () => {
+      window.removeEventListener('resize', RedirectPath)
+    }
+  }, [])
+
+  //* ฟังชันก์ให้ redirect ไปยัง path /timetable
+  function RedirectPath() {
+    if (window.outerWidth >= 768) navigate('/timetable')
+  }
+
   return (
     <div
       className="md:hidden container max-w-7xl mx-auto mt-36 px-6"

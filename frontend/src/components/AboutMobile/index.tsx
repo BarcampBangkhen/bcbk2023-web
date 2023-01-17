@@ -1,7 +1,27 @@
 import 'flowbite'
-import { ParticipationDescription, WhatIsBarcampDescription } from '../../Constant'
+import {
+  ParticipationDescription,
+  WhatIsBarcampDescription
+} from '../../Constant'
+import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export default function AboutMobile() {
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    window.addEventListener('resize', RedirectPath)
+
+    return () => {
+      window.removeEventListener('resize', RedirectPath)
+    }
+  }, [])
+
+  //* ฟังชันก์ให้ redirect ไปยัง path /
+  function RedirectPath() {
+    if (window.outerWidth < 768) navigate('/#myabout')
+  }
+
   return (
     <div className="md:hidden container max-w-7xl mt-52 md:mt-16" id="myabout">
       <div className="px-8">
@@ -19,9 +39,7 @@ export default function AboutMobile() {
         </div>
         <div className="bg-Blond20 mt-6 p-12 pl-14 max-w-[390px] rounded-3xl drop-shadow-lg">
           <h2 className="text-center text-2xl font-bold mb-6">Participants</h2>
-          <p>
-            {ParticipationDescription}
-          </p>
+          <p>{ParticipationDescription}</p>
         </div>
       </div>
     </div>
