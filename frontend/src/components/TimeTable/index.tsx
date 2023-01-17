@@ -8,57 +8,57 @@ export const timetableData: TimeItemProp[] = [
   {
     period: '08.00 - 09.30',
     target: 'ลงทะเบียนเข้าร่วมกิจกรรม และ เสนอหัวข้อบรรยาย',
-    icons: './TableIconOne.svg'
+    icons: './icons/timetable/TableIconOne.svg'
   },
   {
     period: '09.30 - 09.45',
     target: 'ลงคะแนนเสียง',
-    icons: './TableIconTwo.svg'
+    icons: './icons/timetable/TableIconTwo.svg'
   },
   {
     period: '09.45 - 10.00',
     target: 'พิธีเปิด และ ถ่ายรูปหมู่ แจกอาหารว่าง',
-    icons: './TableIconThree.svg'
+    icons: './icons/timetable/TableIconThree.svg'
   },
   {
     period: '10.05 - 10.55',
     target: 'รอบบรรยายที่ 1',
-    icons: './TableIconFive.svg'
+    icons: './icons/timetable/TableIconFive.svg'
   },
   {
     period: '11.00 - 11.50',
     target: 'รอบบรรยายที่ 2',
-    icons: './TableIconFive.svg'
+    icons: './icons/timetable/TableIconFive.svg'
   },
   {
     period: '11.50 - 12.40',
     target: 'รับประทานอาหารเที่ยง ณ โรงอาหาร IUP',
-    icons: './TableIconSix.svg'
+    icons: './icons/timetable/TableIconSix.svg'
   },
   {
     period: '12.45 - 13.35',
     target: 'รอบบรรยายที่ 3',
-    icons: './TableIconFive.svg'
+    icons: './icons/timetable/TableIconFive.svg'
   },
   {
     period: '13.40 - 14.30',
     target: 'รอบบรรยายที่ 4',
-    icons: './TableIconFive.svg'
+    icons: './icons/timetable/TableIconFive.svg'
   },
   {
     period: '14.35 - 15.25',
     target: 'รอบบรรยายที่ 5',
-    icons: './TableIconFive.svg'
+    icons: './icons/timetable/TableIconFive.svg'
   },
   {
     period: '15.30 - 16.20',
     target: 'รอบบรรยายที่ 6',
-    icons: './TableIconFive.svg'
+    icons: './icons/timetable/TableIconFive.svg'
   },
   {
     period: '16.20 - 17.20',
     target: 'After Party',
-    icons: './TableIconThree.svg'
+    icons: './icons/timetable/TableIconThree.svg'
   }
 ]
 

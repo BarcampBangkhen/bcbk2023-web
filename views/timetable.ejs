@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Timetable Manage</title>
+    <style>
+      body {
+        padding-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Timetable Management</h1>
+    <details open>
+      <summary style="font-size: 20px; font-weight: 700">
+        Icon name lists
+      </summary>
+      <table>
+        <% icons.forEach(icon => { %>
+        <tr>
+          <td><img src="<%= '/icons/timetable/' + icon %>" /></td>
+          <td><%= icon %></td>
+        </tr>
+        <% }) %>
+      </table>
+    </details>
+
+    <table style="width: 100%; padding-left: 10px; padding-right: 10px">
+      <thead style="height: 50px; width: 90%">
+        <th style="width: 20%">Type/Icon</th>
+        <th style="width: 50%">Title</th>
+        <th style="width: 20%">Time Period</th>
+        <th>Action</th>
+      </thead>
+      <% timetable.forEach(obj => { %>
+      <tr>
+        <td style="text-align: center">
+          <select name="icon" id="<%= obj._id %>">
+            <option value="" hidden>Choose icon</option>
+            <% icons.forEach(icon => { %>
+            <option value="<%= icon %>" 
+                <% if (obj.icon === icon) { %>
+                    selected
+                <% } %>
+            ><%= icon %></option>
+            <% }) %>
+            <option value="-">Line Break</option>
+          </select>
+        </td>
+        <td style="text-align: center">
+          <input
+            style="width: 80%"
+            type="text"
+            name="title"
+            id="<%= obj._id %>"
+            value="<%= obj.title %>"
+          />
+        </td>
+        <td style="text-align: center">
+          <input
+            style="width: 80%"
+            type="text"
+            name="time"
+            id="<%= obj._id %>"
+            value="<%= obj.time %>"
+          />
+        </td>
+        <td style="text-align: center">
+          <button id="<%= obj._id %>" onclick="updateTime(this.id)">
+            Update
+          </button>
+        </td>
+      </tr>
+      <% }) %>
+    </table>
+    <div style="width: 100vw; text-align: center; margin-top: 30px">
+      <button onclick="CreateTimetable()">New topic</button>
+    </div>
+    <script>
+      function getElementByXpath(path) {
+        return document.evaluate(
+          path,
+          document,
+          null,
+          XPathResult.FIRST_ORDERED_NODE_TYPE,
+          null
+        ).singleNodeValue
+      }
+
+      function updateTime(selectedId) {
+        const icon = getElementByXpath(
+          `//*[@id="${selectedId}" and @name="icon"]`
+        )
+        const title = getElementByXpath(
+          `//*[@id="${selectedId}" and @name="title"]`
+        )
+        const time = getElementByXpath(
+          `//*[@id="${selectedId}" and @name="time"]`
+        )
+        if (icon.value === "") {
+            alert("Please select icon")
+            return
+        }
+        var credentials = prompt('Please enter your password')
+        if (credentials == null) return
+        var base64Credentials = btoa(credentials)
+        var authHeader = 'Basic ' + base64Credentials
+        fetch('/api/timetable/manage', {
+          method: 'POST',
+          headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+            Authorization: authHeader
+          },
+          body: JSON.stringify({
+            id: selectedId,
+            icon: icon.value,
+            title: title.value,
+            time: time.value
+          })
+        })
+          .then((res) => {
+            if (res.status === 401) alert('Time update failed')
+            else if (res.status === 200) {
+              alert('Success')
+              location.reload()
+            }
+          })
+          .catch((err) => {
+            alert('Time update failed')
+          })
+      }
+
+      const CreateTimetable = () => {
+        var credentials = prompt('Please enter your password')
+        if (credentials == null) return
+        var base64Credentials = btoa(credentials)
+        var authHeader = 'Basic ' + base64Credentials
+        fetch('/api/timetable/manage', {
+          method: 'PUT',
+          headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+            Authorization: authHeader
+          }
+        })
+          .then((res) => {
+            if (res.status === 400) alert('Timetable submission failed')
+            if (res.status === 401) alert("You're not authorized")
+            else {
+              alert('Success')
+              location.reload()
+            }
+          })
+          .catch((err) => {
+            alert('Timetable submission failed')
+          })
+      }
+    </script>
+  </body>
+</html>
