@@ -1,5 +1,6 @@
 import express, { Request, Response, Router } from 'express'
 import faqRouter from './routes/faq.route'
+import timetableRouter from './routes/timetable.route'
 import { connect, set } from 'mongoose'
 import { Constant } from './constant'
 import path from 'path'
@@ -16,6 +17,7 @@ app.use(express.static(staticPath))
 
 const apiRouter = Router()
 apiRouter.use('/faq', faqRouter)
+apiRouter.use('/timetable', timetableRouter)
 
 app.set('view engine', 'ejs')
 app.use('/api', cors(), apiRouter)

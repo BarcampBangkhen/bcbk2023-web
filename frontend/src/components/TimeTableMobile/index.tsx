@@ -1,10 +1,43 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import 'flowbite'
 import { displaydateFormat } from '../Utils'
-import { EventDate } from '../../Constant'
-import { timetableData } from '../TimeTable'
+import { ApiBaseUrl, EventDate } from '../../Constant'
+import axios from 'axios'
+import { ITimetable } from '../../models/TImetable'
+import { useNavigate } from 'react-router-dom'
 
 export default function TimeTableMobile() {
+  const [timetableData, setTimetableData] = useState<ITimetable[]>([])
+  const navigate = useNavigate()
+
+  const getTimetable = async () => {
+    axios
+      .get<ITimetable[]>(ApiBaseUrl + '/timetable')
+      .then((res) => {
+        setTimetableData(res.data)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+
+  useEffect(() => {
+    getTimetable()
+  }, [])
+
+  useEffect(() => {
+    window.addEventListener('resize', RedirectPath)
+
+    return () => {
+      window.removeEventListener('resize', RedirectPath)
+    }
+  }, [])
+
+  //* ฟังชันก์ให้ redirect ไปยัง path /timetable
+  function RedirectPath() {
+    if (window.outerWidth >= 768) navigate('/timetable')
+  }
+
   return (
     <div
       className="md:hidden container max-w-7xl mx-auto mt-36 px-6"
@@ -30,71 +63,18 @@ export default function TimeTableMobile() {
         </div>
 
         <div className="mt-8">
-          <div className="border-b-2 pb-2 mb-6 border-Neutral02">
-            <TimeItem
-              period={timetableData[0].period}
-              icons={timetableData[0].icons}
-              target={timetableData[0].target}
-            />
-            <TimeItem
-              period={timetableData[1].period}
-              icons={timetableData[1].icons}
-              target={timetableData[1].target}
-            />
-            <TimeItem
-              period={timetableData[2].period}
-              icons={timetableData[2].icons}
-              target={timetableData[2].target}
-            />
-          </div>
-          <div className="border-b-2 pb-2 mb-6 border-Neutral02">
-            <TimeItem
-              period={timetableData[3].period}
-              icons={timetableData[3].icons}
-              target={timetableData[3].target}
-            />
-            <TimeItem
-              period={timetableData[4].period}
-              icons={timetableData[4].icons}
-              target={timetableData[4].target}
-            />
-          </div>
-          <div className="border-b-2 pb-2 mb-6 border-Neutral02">
-            <TimeItem
-              period={timetableData[5].period}
-              icons={timetableData[5].icons}
-              target={timetableData[5].target}
-            />
-          </div>
-          <div className="border-b-2 pb-2 mb-6 border-Neutral02">
-            <TimeItem
-              period={timetableData[6].period}
-              icons={timetableData[6].icons}
-              target={timetableData[6].target}
-            />
-            <TimeItem
-              period={timetableData[7].period}
-              icons={timetableData[7].icons}
-              target={timetableData[7].target}
-            />
-            <TimeItem
-              period={timetableData[8].period}
-              icons={timetableData[8].icons}
-              target={timetableData[8].target}
-            />
-            <TimeItem
-              period={timetableData[9].period}
-              icons={timetableData[9].icons}
-              target={timetableData[9].target}
-            />
-          </div>
-          <div className="pb-2">
-            <TimeItem
-              period={timetableData[10].period}
-              icons={timetableData[10].icons}
-              target={timetableData[10].target}
-            />
-          </div>
+          {timetableData.map((time) => {
+            if (time.icon === '-') {
+              return <div className="border-b-2 pb-2 mb-6 border-Neutral02" />
+            }
+            return (
+              <TimeItem
+                period={time.time}
+                icons={'icons/timetable/' + time.icon}
+                target={time.title}
+              />
+            )
+          })}
         </div>
       </article>
     </div>
