@@ -44,7 +44,9 @@
                 <% } %>
             ><%= icon %></option>
             <% }) %>
-            <option value="-">Line Break</option>
+            <option value="-" <% if (obj.icon === "-") { %>
+                selected
+            <% } %>>Line Break</option>
           </select>
         </td>
         <td style="text-align: center">
