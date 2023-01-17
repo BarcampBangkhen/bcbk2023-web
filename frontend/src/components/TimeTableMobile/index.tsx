@@ -54,7 +54,7 @@ export default function TimeTableMobile() {
             return (
               <TimeItem
                 period={time.time}
-                icons={time.icon}
+                icons={'icons/timetable/' + time.icon}
                 target={time.title}
               />
             )
