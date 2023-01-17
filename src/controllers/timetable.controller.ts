@@ -8,8 +8,13 @@ const getFileList = async (path: string) => {
   const filesList = await fs.promises.readdir(path)
   return filesList
 }
-export const GetAllTimetable = (req: Request, res: Response) => {
-  return res.status(200).json({})
+export const GetAllTimetable = async (req: Request, res: Response) => {
+  const timetable = await Timetable.find({
+    icon: { $ne: null },
+    title: { $ne: null },
+    time: { $ne: null }
+  }).exec()
+  return res.status(200).json(timetable)
 }
 
 export const ManageTimetable = async (req: Request, res: Response) => {
