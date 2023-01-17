@@ -124,7 +124,6 @@
             if (res.status === 401) alert('Time update failed')
             else if (res.status === 200) {
               alert('Success')
-              location.reload()
             }
           })
           .catch((err) => {
@@ -149,7 +148,6 @@
             if (res.status === 401) alert("You're not authorized")
             else {
               alert('Success')
-              location.reload()
             }
           })
           .catch((err) => {
