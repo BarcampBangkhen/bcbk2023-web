@@ -10,9 +10,14 @@ const getFileList = async (path: string) => {
 }
 export const GetAllTimetable = async (req: Request, res: Response) => {
   const timetable = await Timetable.find({
-    icon: { $ne: null },
-    title: { $ne: null },
-    time: { $ne: null }
+    $and: [
+      {
+        $or: [
+          { icon: { $ne: '' }, title: { $ne: '' }, time: { $ne: '' } },
+          { icon: '-' }
+        ]
+      }
+    ]
   }).exec()
   return res.status(200).json(timetable)
 }
