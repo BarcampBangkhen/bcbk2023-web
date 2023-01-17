@@ -59,7 +59,6 @@ const MobileSidebar = () => {
                         <SidebarListItem title="About" icon="./iconAbout.svg" onClick={collapseSidebar} id="myabout"/>
                         <SidebarListItem title="FAQS" icon="./iconFAQS.svg" onClick={collapseSidebar} id="myfaqs"/>
                         <SidebarListItem title="Timetable" icon="./iconTimetable.svg" onClick={collapseSidebar} id="mytimetable"/>
-                        <SidebarListItem title="Session" icon="./iconSession.svg" onClick={collapseSidebar} id="mysession"/>
                     </ul>
                 </div>
                 
