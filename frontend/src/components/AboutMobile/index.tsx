@@ -3,25 +3,8 @@ import {
   ParticipationDescription,
   WhatIsBarcampDescription
 } from '../../Constant'
-import { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
 
 export default function AboutMobile() {
-  const navigate = useNavigate()
-
-  useEffect(() => {
-    window.addEventListener('resize', RedirectPath)
-
-    return () => {
-      window.removeEventListener('resize', RedirectPath)
-    }
-  }, [])
-
-  //* ฟังชันก์ให้ redirect ไปยัง path /
-  function RedirectPath() {
-    if (window.outerWidth < 768) navigate('/#myabout')
-  }
-
   return (
     <div className="md:hidden container max-w-7xl mt-52 md:mt-16" id="myabout">
       <div className="px-8">

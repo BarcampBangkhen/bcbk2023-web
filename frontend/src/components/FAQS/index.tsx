@@ -26,7 +26,7 @@ export default function FAQS() {
 
   //* ฟังชันก์ให้ redirect ไปยัง path /
   function RedirectPath() {
-    if (window.outerWidth < 768) navigate('/#myfaqs')
+    if (window.outerWidth < 768) navigate('/')
   }
 
   const askQuestion = () => {
