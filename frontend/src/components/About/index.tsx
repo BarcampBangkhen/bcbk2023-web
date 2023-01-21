@@ -19,7 +19,7 @@ export default function About() {
 
   //* ฟังชันก์ให้ redirect ไปยัง path /
   function RedirectPath() {
-    if (window.outerWidth < 768) navigate('/#myabout')
+    if (window.outerWidth < 768) navigate('/')
   }
 
   return (
