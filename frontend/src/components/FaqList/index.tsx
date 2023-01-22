@@ -24,7 +24,7 @@ const FaqList = (props: FaqListProps) => {
         >
           <span>{props.title}</span>
           <img
-            src="./iconAccordion.svg"
+            src="./assets/iconAccordion.svg"
             alt="iconAccordion"
             className={expand ? 'rotate-180' : ''}
           />

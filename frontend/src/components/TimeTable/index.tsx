@@ -76,7 +76,7 @@ export default function TimeTable() {
               <TimeItem
                 key={index}
                 period={time.time}
-                icons={'icons/timetable/' + time.icon}
+                icons={'assets/timetable/' + time.icon}
                 target={time.title}
               />
             )

@@ -41,12 +41,12 @@ const MobileSidebar = () => {
       <div className="flex justify-between items-center ml-8 mt-4">
         <div className="flex justify-center ml-3">
           <button className="w-10 h-16" type="button" onClick={toggleSidebar}>
-            <img src="./iconHamberger.svg" className="object-cover w-full" />
+            <img src="./assets/iconHamberger.svg" className="object-cover w-full" />
           </button>
         </div>
 
         <div className="flex justify-center">
-          <img src="./LogoBarcamp.svg"></img>
+          <img src="./assets/LogoBarcamp.svg"></img>
         </div>
       </div>
 
@@ -58,7 +58,7 @@ const MobileSidebar = () => {
         <div className="flex justify-end py-5">
           <button className="mr-5 p-2" onClick={toggleSidebar}>
             <span>
-              <img src="./cross.svg" alt="cross" />
+              <img src="./assets/cross.svg" alt="cross" />
             </span>
           </button>
         </div>
@@ -67,25 +67,25 @@ const MobileSidebar = () => {
           <ul>
             <SidebarListItem
               title="Home"
-              icon="./iconHome.svg"
+              icon="./assets/iconHome.svg"
               onClick={collapseSidebar}
               id="mytop"
             />
             <SidebarListItem
               title="About"
-              icon="./iconAbout.svg"
+              icon="./assets/iconAbout.svg"
               onClick={collapseSidebar}
               id="about"
             />
             <SidebarListItem
               title="FAQS"
-              icon="./iconFAQS.svg"
+              icon="./assets/iconFAQS.svg"
               onClick={collapseSidebar}
               id="myfaqs"
             />
             <SidebarListItem
               title="Timetable"
-              icon="./iconTimetable.svg"
+              icon="./assets/iconTimetable.svg"
               onClick={collapseSidebar}
               id="mytimetable"
             />
@@ -109,7 +109,7 @@ const MobileSidebar = () => {
           className="border w-[55px] h-[55px] cursor-pointer bg-Blond100 border-Rusty100 rounded-full flex justify-center items-center"
           onClick={comebackHome}
         >
-          <img src="./iconUp.svg" alt="iconUp" />
+          <img src="./assets/iconUp.svg" alt="iconUp" />
         </div>
       </div>
     </div>

@@ -10,7 +10,7 @@ export default function Navbar(): JSX.Element {
           {/* Logo Bicycle */}
           <span className="hidden md:flex items-center flex-shrink-0">
             <img
-              src="./Logo.svg"
+              src="./assets/Logo.svg"
               className=" w-[125px] h-[70px]"
               alt="Flowbite Logo"
             />

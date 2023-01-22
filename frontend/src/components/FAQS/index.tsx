@@ -107,7 +107,7 @@ export default function FAQS() {
               Ask a question <span className="text-red-600">*</span>
             </span>
             <img
-              src="./cross.svg"
+              src="./assets/cross.svg"
               alt="cross"
               className="cursor-pointer"
               onClick={askQuestion}

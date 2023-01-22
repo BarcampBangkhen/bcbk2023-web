@@ -70,7 +70,7 @@ export default function Home() {
           {/* Scope Left */}
           <div className="ml-4">
             <img
-              src="./LogoBarcamp.svg"
+              src="./assets/LogoBarcamp.svg"
               alt="LogoBarcamp"
               className="hidden md:block md:w-[692px] md:h-[217px]"
             />
@@ -95,7 +95,7 @@ export default function Home() {
               </a>
               <span className="hidden md:inline-flex border-2 border-Rusty100 ml-5 py-[4px] px-[15px] items-center rounded-3xl font-medium text-lg">
                 <img
-                  src="./iconhourglass.svg"
+                  src="./assets/iconhourglass.svg"
                   alt="hourglass"
                   className="mr-2"
                 />
@@ -107,7 +107,7 @@ export default function Home() {
           {/* Scope Right */}
           <div className="w-[385px] h-[240px] md:w-[825px] md:h-[514px]">
             <img
-              src="./Logo.svg"
+              src="./assets/Logo.svg"
               alt="LogoBarcamp"
               className="w-full md:ml-5"
             />

@@ -93,7 +93,7 @@ export default function SessionMobile() {
             <div className="max-w-[380px] h-[470px] p-4 bg-Blond20 rounded-lg drop-shadow-[2px_2px_32px_rgba(0,0,0,0.25)] fadeModal">
                 <div className="flex justify-between px-4 mt-3 w-full">
                     <span className="text-2xl font-medium">Create New Session</span>
-                    <img src="./cross.svg" alt="cross" className="cursor-pointer" onClick={toggleSession}/>
+                    <img src="./assets/cross.svg" alt="cross" className="cursor-pointer" onClick={toggleSession}/>
                 </div>
 
                 <div className="w-full flex flex-col justify-center mt-3 px-4">

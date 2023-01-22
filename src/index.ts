@@ -13,12 +13,27 @@ const staticPath = path.normalize(
   path.join(__dirname, '..', 'frontend', 'build')
 )
 
-app.use(express.json())
-app.use(express.static(staticPath))
 app.use((req: Request, res: Response, next: NextFunction) => {
-  logger.info(`${req.method}: ${req.originalUrl}`)
+  if (req.originalUrl.includes('assets')) return next()
+  logger.info(`Request ${req.method}: ${req.originalUrl}`)
+  res.on('finish', () => {
+    const statusCode = res.statusCode.toString()
+    if (statusCode.startsWith('2') || statusCode.startsWith('3'))
+      logger.info(
+        `${req.originalUrl} Returned ${res.statusCode} ${res.statusMessage}`
+      )
+    else if (statusCode.startsWith('4'))
+      logger.warn(
+        `${req.originalUrl} Returned ${res.statusCode} ${res.statusMessage}`
+      )
+    else if (statusCode.startsWith('5'))
+      logger.error(
+        `${req.originalUrl} Returned ${res.statusCode} ${res.statusMessage}`
+      )
+  })
   next()
 })
+app.use(express.json())
 
 const apiRouter = Router()
 apiRouter.use('/faq', faqRouter)
@@ -27,6 +42,7 @@ apiRouter.use('/timetable', timetableRouter)
 app.set('view engine', 'ejs')
 app.use('/api', cors(), apiRouter)
 
+app.use(express.static(staticPath))
 app.get('*', (req: Request, res: Response) => {
   res.sendFile(path.join(staticPath, 'index.html'))
 })
