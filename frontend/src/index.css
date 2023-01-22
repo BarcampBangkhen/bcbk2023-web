@@ -9,15 +9,9 @@ html {
 body {
   font-family: 'Kanit', sans-serif;
   background-image: url('/backgroundDesktop.svg');
-  background-position: left top;
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
-  height: 100%;
-  width: 100%;
-  margin: 0px;
-  padding: 0px;
-  overflow-x: hidden;
 }
 
 @media screen and (max-width: 768px) {
