@@ -7,6 +7,7 @@ import TimeTableMobile from '../TimeTableMobile'
 import pluralize, { plural } from 'pluralize'
 import { EventDate, RegistrationLink } from '../../Constant'
 import { displaydateFormat, getDateInBangkokTimezone } from '../Utils'
+import About from '../About'
 
 const oneSecond = 1000
 const oneMinute = 60 * oneSecond
@@ -15,6 +16,7 @@ const oneDay = 24 * oneHour
 
 export default function Home() {
   const [remaining, setRemaining] = useState<string>('')
+  const [isMobileView, setMobileView] = useState(false)
 
   const computeRemainingDays = () => {
     const bangkokDate = getDateInBangkokTimezone(new Date())
@@ -51,6 +53,16 @@ export default function Home() {
       clearInterval(remainingInterval)
     }
   }, [remaining])
+
+  const checkMobileView = () => setMobileView(window.outerWidth < 768)
+
+  useEffect(() => {
+    checkMobileView()
+    window.addEventListener('resize', checkMobileView)
+    return () => {
+      window.removeEventListener('resize', checkMobileView)
+    }
+  }, [])
 
   return (
     <React.Fragment>
@@ -105,9 +117,9 @@ export default function Home() {
       </div>
 
       {/* display page AboutMobile when the size screen < 768px */}
-      <AboutMobile />
-      <FAQSMobile />
-      <TimeTableMobile />
+      {isMobileView && <About />}
+      {isMobileView && <FAQSMobile />}
+      {isMobileView && <TimeTableMobile />}
     </React.Fragment>
   )
 }
