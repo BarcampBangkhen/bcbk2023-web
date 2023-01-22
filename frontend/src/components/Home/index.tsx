@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import 'flowbite'
 
-import AboutMobile from '../AboutMobile'
-import FAQSMobile from '../FAQSMobile'
-import TimeTableMobile from '../TimeTableMobile'
-import pluralize, { plural } from 'pluralize'
+import pluralize from 'pluralize'
 import { EventDate, RegistrationLink } from '../../Constant'
 import { displaydateFormat, getDateInBangkokTimezone } from '../Utils'
+import About from '../About'
+import FAQS from '../FAQS'
+import TimeTable from '../TimeTable'
 
 const oneSecond = 1000
 const oneMinute = 60 * oneSecond
@@ -15,6 +15,7 @@ const oneDay = 24 * oneHour
 
 export default function Home() {
   const [remaining, setRemaining] = useState<string>('')
+  const [isMobileView, setMobileView] = useState(false)
 
   const computeRemainingDays = () => {
     const bangkokDate = getDateInBangkokTimezone(new Date())
@@ -52,6 +53,16 @@ export default function Home() {
     }
   }, [remaining])
 
+  const checkMobileView = () => setMobileView(window.outerWidth < 768)
+
+  useEffect(() => {
+    checkMobileView()
+    window.addEventListener('resize', checkMobileView)
+    return () => {
+      window.removeEventListener('resize', checkMobileView)
+    }
+  }, [])
+
   return (
     <React.Fragment>
       <div className="container max-w-7xl mx-auto mt-4 md:mt-20">
@@ -59,7 +70,7 @@ export default function Home() {
           {/* Scope Left */}
           <div className="ml-4">
             <img
-              src="./LogoBarcamp.svg"
+              src="./assets/LogoBarcamp.svg"
               alt="LogoBarcamp"
               className="hidden md:block md:w-[692px] md:h-[217px]"
             />
@@ -84,7 +95,7 @@ export default function Home() {
               </a>
               <span className="hidden md:inline-flex border-2 border-Rusty100 ml-5 py-[4px] px-[15px] items-center rounded-3xl font-medium text-lg">
                 <img
-                  src="./iconhourglass.svg"
+                  src="./assets/iconhourglass.svg"
                   alt="hourglass"
                   className="mr-2"
                 />
@@ -96,7 +107,7 @@ export default function Home() {
           {/* Scope Right */}
           <div className="w-[385px] h-[240px] md:w-[825px] md:h-[514px]">
             <img
-              src="./Logo.svg"
+              src="./assets/Logo.svg"
               alt="LogoBarcamp"
               className="w-full md:ml-5"
             />
@@ -105,9 +116,9 @@ export default function Home() {
       </div>
 
       {/* display page AboutMobile when the size screen < 768px */}
-      <AboutMobile />
-      <FAQSMobile />
-      <TimeTableMobile />
+      {isMobileView && <About />}
+      {isMobileView && <FAQS />}
+      {isMobileView && <TimeTable />}
     </React.Fragment>
   )
 }

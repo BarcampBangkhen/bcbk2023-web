@@ -12,7 +12,7 @@ export default function Footer() {
         {/* block 1 */}
         <div className="w-80 text-center mb-8 md:w-auto md:mb-0 md:flex md:justify-between md:items-center">
           <img
-            src="./LogoBarcamp.svg"
+            src="/assets/LogoBarcamp.svg"
             className="hidden md:block w-[250px] h-[90px]"
           ></img>
           <div>
@@ -71,21 +71,21 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <img src="./iconFacebook.svg" />
+                  <img src="/assets/iconFacebook.svg" />
                 </a>
                 <a
                   href={TwitterProfile}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <img src="/iconTwitter.svg" className="ml-4" />
+                  <img src="/assets/iconTwitter.svg" className="ml-4" />
                 </a>
                 <a
                   href={InstagramProfile}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <img src="/iconInstagram.svg" className="ml-4" />
+                  <img src="/assets/iconInstagram.svg" className="ml-4" />
                 </a>
               </div>
             </div>

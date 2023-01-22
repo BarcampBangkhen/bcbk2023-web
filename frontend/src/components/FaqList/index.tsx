@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import ReactMarkdown from 'react-markdown'
 
 interface FaqListProps {
   title: string
@@ -23,7 +24,7 @@ const FaqList = (props: FaqListProps) => {
         >
           <span>{props.title}</span>
           <img
-            src="./iconAccordion.svg"
+            src="./assets/iconAccordion.svg"
             alt="iconAccordion"
             className={expand ? 'rotate-180' : ''}
           />
@@ -33,7 +34,7 @@ const FaqList = (props: FaqListProps) => {
         className={`bg-Blond100 rounded-b-lg fade` + (expand ? '' : ' hidden')}
       >
         <div className="pb-3 px-5 font-light border-x border-b border-Neutral01 text-Neutral03 rounded-b-lg whitespace-pre-line">
-          <p>{props.description}</p>
+          <ReactMarkdown>{props.description}</ReactMarkdown>
         </div>
       </div>
     </div>

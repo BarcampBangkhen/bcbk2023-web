@@ -27,7 +27,7 @@ export const ManageTimetable = async (req: Request, res: Response) => {
   const iconPath = path.join(
     __dirname,
     '../..',
-    'frontend/build/icons/timetable'
+    'frontend/build/assets/timetable'
   )
   const fileList = await getFileList(iconPath)
   return res.render(path.join(__dirname, '../..', 'views/timetable'), {
