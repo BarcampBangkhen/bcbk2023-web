@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import 'flowbite'
 
-import TimeTableMobile from '../TimeTableMobile'
 import pluralize from 'pluralize'
 import { EventDate, RegistrationLink } from '../../Constant'
 import { displaydateFormat, getDateInBangkokTimezone } from '../Utils'
