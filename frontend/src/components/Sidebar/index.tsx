@@ -88,7 +88,7 @@ const SidebarListItem = ({ title, icon, onClick, id }: SidebarListItemProps) => 
     return (
         <li className="flex mt-6">
             <img src={icon} className="ml-12 w-7"/>
-            <a href={`#${id}`}  onClick={onClick} className="mb-2 ml-5 cursor-pointer  text-Falu100 text-xl pt-2 font-semibold">{title}</a>
+            <a href={`/#${id}`}  onClick={onClick} className="mb-2 ml-5 cursor-pointer  text-Falu100 text-xl pt-2 font-semibold">{title}</a>
         </li>
     )
 }
