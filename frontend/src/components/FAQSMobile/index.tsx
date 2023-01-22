@@ -47,10 +47,10 @@ export default function FAQSMobile() {
 
   return (
     <div className="md:hidden container max-w-7xl mx-auto mt-36" id="myfaqs">
-      <div className="px-8">
-        <div className="border-b-2 border-Falu100 text-lg mt-4">
-          <h1 className="text-3xl text-Falu100 font-bold">FAQs</h1>
-        </div>
+      <div className="mt-4 px-8">
+        <h1 className="text-3xl text-Falu100 font-bold border-b-2 border-Falu100">
+          FAQs
+        </h1>
       </div>
 
       {/* list item */}

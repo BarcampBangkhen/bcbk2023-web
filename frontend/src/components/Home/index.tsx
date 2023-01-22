@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import 'flowbite'
 
-import FAQSMobile from '../FAQSMobile'
 import TimeTableMobile from '../TimeTableMobile'
 import pluralize from 'pluralize'
 import { EventDate, RegistrationLink } from '../../Constant'
 import { displaydateFormat, getDateInBangkokTimezone } from '../Utils'
 import About from '../About'
+import FAQS from '../FAQS'
 
 const oneSecond = 1000
 const oneMinute = 60 * oneSecond
@@ -117,7 +117,7 @@ export default function Home() {
 
       {/* display page AboutMobile when the size screen < 768px */}
       {isMobileView && <About />}
-      {isMobileView && <FAQSMobile />}
+      {isMobileView && <FAQS />}
       {isMobileView && <TimeTableMobile />}
     </React.Fragment>
   )
