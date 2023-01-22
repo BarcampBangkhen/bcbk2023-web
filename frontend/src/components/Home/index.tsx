@@ -7,6 +7,7 @@ import { EventDate, RegistrationLink } from '../../Constant'
 import { displaydateFormat, getDateInBangkokTimezone } from '../Utils'
 import About from '../About'
 import FAQS from '../FAQS'
+import TimeTable from '../TimeTable'
 
 const oneSecond = 1000
 const oneMinute = 60 * oneSecond
@@ -118,7 +119,7 @@ export default function Home() {
       {/* display page AboutMobile when the size screen < 768px */}
       {isMobileView && <About />}
       {isMobileView && <FAQS />}
-      {isMobileView && <TimeTableMobile />}
+      {isMobileView && <TimeTable />}
     </React.Fragment>
   )
 }
