@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import 'flowbite'
 
-import AboutMobile from '../AboutMobile'
 import FAQSMobile from '../FAQSMobile'
 import TimeTableMobile from '../TimeTableMobile'
-import pluralize, { plural } from 'pluralize'
+import pluralize from 'pluralize'
 import { EventDate, RegistrationLink } from '../../Constant'
 import { displaydateFormat, getDateInBangkokTimezone } from '../Utils'
 import About from '../About'
