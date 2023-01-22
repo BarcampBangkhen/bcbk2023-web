@@ -22,7 +22,7 @@ function App(): JSX.Element {
         <Route path="about" element={<About />} />
         <Route path="faqs" element={<FAQS />} />
         <Route path="timetable" element={<TimeTable />} />
-        <Route path='*' element={<NotFound />}/>
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </React.Fragment>
