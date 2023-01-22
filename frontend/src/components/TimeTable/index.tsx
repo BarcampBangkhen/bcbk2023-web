@@ -58,12 +58,18 @@ export default function TimeTable() {
         </div>
 
         <div className="mt-8">
-          {timetableData.map((time) => {
+          {timetableData.map((time, index) => {
             if (time.icon === '-') {
-              return <div className="border-b-2 pb-2 mb-6 border-Neutral02" />
+              return (
+                <div
+                  key={index}
+                  className="border-b-2 pb-2 mb-6 border-Neutral02"
+                />
+              )
             }
             return (
               <TimeItem
+                key={index}
                 period={time.time}
                 icons={'icons/timetable/' + time.icon}
                 target={time.title}
