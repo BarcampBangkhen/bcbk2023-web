@@ -31,6 +31,8 @@
     "express": "^4.18.2",
     "glob": "^8.1.0",
     "mongoose": "^6.8.2",
+    "pino": "^8.8.0",
+    "pino-pretty": "^9.1.1",
     "zod": "^3.20.2"
   },
   "devDependencies": {
