@@ -99,8 +99,8 @@ const TimeItem = ({ period, target, icons }: TimeItemProp) => {
       <div className="hidden md:block text-Neutral03 text-base font-normal">
         {period}
       </div>
-      <div className="w-[600px] screenTable:w-[680px] lg:w-[750px] h-14 bg-Blond20 rounded-3xl flex drop-shadow-[2px_4px_48px_rgba(0,0,0,0.1)]">
-        <div className="flex items-center ml-2">
+      <div className="w-full screenTable:w-[680px] lg:w-[750px] h-14 bg-Blond20 rounded-3xl flex drop-shadow-[2px_4px_48px_rgba(0,0,0,0.1)]">
+        <div className="min-w-[45px] flex items-center ml-2">
           <img src={icons} alt="tableIconOne" />
         </div>
         <div className="min-w-[125px] text-Neutral03 text-base font-normal flex md:hidden items-center px-3">
