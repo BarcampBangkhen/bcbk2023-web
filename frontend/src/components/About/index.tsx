@@ -24,7 +24,7 @@ export default function About() {
 
   return (
     <React.Fragment>
-      <div className="container xl:relative max-w-7xl mx-auto mt-52 md:mt-16 h-auto lg:h-[650px]" id="about">
+      <div className="container xl:relative max-w-7xl mx-auto md:mt-16 h-auto lg:h-[650px]" id="about">
         <div className="px-8 md:pl-20">
           <h1 className="text-3xl md:text-5xl text-Falu100 font-bold border-b-2 border-Falu100 md:border-0">
             About us

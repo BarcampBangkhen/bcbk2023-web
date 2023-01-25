@@ -7,6 +7,7 @@ import { displaydateFormat, getDateInBangkokTimezone } from '../Utils'
 import About from '../About'
 import FAQS from '../FAQS'
 import TimeTable from '../TimeTable'
+import SponsorContainer from '../Sponsors/sponsorContainer'
 
 const oneSecond = 1000
 const oneMinute = 60 * oneSecond
@@ -65,7 +66,7 @@ export default function Home() {
 
   return (
     <React.Fragment>
-      <div className="container max-w-7xl mx-auto mt-4 md:mt-20">
+      <div className="container max-w-7xl mx-auto mt-4 md:mt-20 h-screen">
         <div className="flex flex-col-reverse items-center md:items-stretch md:flex-row ">
           {/* Scope Left */}
           <div className="ml-4">
@@ -119,6 +120,7 @@ export default function Home() {
       {isMobileView && <About />}
       {isMobileView && <FAQS />}
       {isMobileView && <TimeTable />}
+      <SponsorContainer />
     </React.Fragment>
   )
 }

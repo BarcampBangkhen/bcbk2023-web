@@ -1,0 +1,23 @@
+import SponsorPanel from "./sponsorPanel";
+
+export interface SponsorSectionProp{
+    imageSize: string;
+}
+
+const SponsorContainer = () => {
+    const imageList = ['https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png', 'https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png', 'https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png', 'https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png', 'https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png']
+    const imageList2 = ['https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png', 'https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png', 'https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png', 'https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png', 'https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png', 'https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png', 'https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png', 'https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png', 'https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png']
+    const imageList3 = ['https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png', 'https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png', 'https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png', 'https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png', 'https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png', 'https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png', 'https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png', 'https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png', 'https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png', 'https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png', 'https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png', 'https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png', 'https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png', 'https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png', 'https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png', 'https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png', 'https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png', 'https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png', 'https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png']
+    return (
+        <div className="mx-[10%] md:mt-0 mt-36">
+            <p className="text-[#880D1E] text-center text-3xl">Barcamp Bangkhen would like to specially thank our 2023 sponsors.</p>
+            <p className="text-black text-center text-lg my-8 mx-[20%]">We kindly request your support for our sponsors  during the event and throughout the year. Their generous contributions make this event possible and we are truly grateful for their support.</p>
+            <SponsorPanel imageSize={"large"} imageList={imageList}/>
+            <SponsorPanel imageSize={"medium"} imageList={imageList2}/>
+            <SponsorPanel imageSize={"small"} imageList={imageList3}/>
+        </div>
+        
+    )
+}
+
+export default  SponsorContainer
