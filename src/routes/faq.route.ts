@@ -14,8 +14,8 @@ router.get('/', preventManualAccess, GetAllAnsweredQuestions)
 
 router.put('/', preventManualAccess, PutQuestion)
 
-router.get('/manage', validate, GetAllQuestions)
+router.get('/manage', GetAllQuestions)
 
-router.patch('/manage', PatchQuestion)
+router.patch('/manage', validate, PatchQuestion)
 
 export default router
