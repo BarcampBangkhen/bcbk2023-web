@@ -5,6 +5,7 @@ import {
   ManageTimetable,
   UpdateTimetable
 } from '../controllers/timetable.controller'
+import { validate } from '../utils/validateUser'
 
 const router = Router()
 
@@ -12,8 +13,8 @@ router.get('/', GetAllTimetable)
 
 router.get('/manage', ManageTimetable)
 
-router.post('/manage', UpdateTimetable)
+router.post('/manage', validate, UpdateTimetable)
 
-router.put('/manage', CreateTimetableObject)
+router.put('/manage', validate, CreateTimetableObject)
 
 export default router

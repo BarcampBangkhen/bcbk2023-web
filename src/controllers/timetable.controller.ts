@@ -2,7 +2,6 @@ import { Request, Response } from 'express'
 import path from 'path'
 import fs from 'fs'
 import { ITimetable, Timetable } from '../models/TImetable.model'
-import { Admin } from '../models/User.model'
 
 const getFileList = async (path: string) => {
   const filesList = await fs.promises.readdir(path)
@@ -41,10 +40,6 @@ export const UpdateTimetable = async (
   req: Request<Record<string, never>, Record<string, never>, ITimetable>,
   res: Response
 ) => {
-  const admin = await Admin.findOne({
-    credential: req.headers.authorization?.replace('Basic ', '')
-  })
-  if (admin === null) return res.status(401).json({})
   if (req.body.id === null) return res.status(400).json({})
   const timetable = await Timetable.findOne({ _id: req.body.id })
   if (timetable !== null) {
@@ -58,10 +53,6 @@ export const UpdateTimetable = async (
 }
 
 export const CreateTimetableObject = async (req: Request, res: Response) => {
-  const admin = await Admin.findOne({
-    credential: req.headers.authorization?.replace('Basic ', '')
-  })
-  if (admin === null) return res.status(401).json({})
   const timetableItem = new Timetable()
   timetableItem
     .save()

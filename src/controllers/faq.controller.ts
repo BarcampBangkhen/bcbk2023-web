@@ -5,7 +5,6 @@ import {
   CreateAskedQuestionInput
 } from '../schemas/faq.schema'
 import path from 'path'
-import { Admin } from '../models/User.model'
 
 export const GetAllQuestions = async (req: Request, res: Response) => {
   const questions = await AskedQuestion.find()
@@ -47,10 +46,6 @@ export const PatchQuestion = async (
   >,
   res: Response
 ) => {
-  const admin = await Admin.findOne({
-    credential: req.headers.authorization?.replace('Basic ', '')
-  })
-  if (admin === null) return res.status(401).json({})
   const faq = await AskedQuestion.findById(req.body.id).exec()
   if (faq !== null) {
     faq.answer = req.body.answer
