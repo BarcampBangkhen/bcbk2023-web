@@ -1,6 +1,7 @@
 import express, { NextFunction, Request, Response, Router } from 'express'
 import faqRouter from './routes/faq.route'
 import timetableRouter from './routes/timetable.route'
+import sponsorRouter from './routes/sponsor.route'
 import { connect, set } from 'mongoose'
 import { Constant } from './constant'
 import path from 'path'
@@ -38,6 +39,7 @@ app.use(express.json())
 const apiRouter = Router()
 apiRouter.use('/faq', faqRouter)
 apiRouter.use('/timetable', timetableRouter)
+apiRouter.use('/sponsor', sponsorRouter)
 
 app.set('view engine', 'ejs')
 app.use('/api', cors(), apiRouter)

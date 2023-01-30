@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Sponsors Manage</title>
+    <style>
+      body {
+        padding-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Sponsors Management</h1>
+    <div>
+      <h2>Add new sponsor</h2>
+      <div>
+        <input type="file" id="filetoupload" />
+        <select id="size">
+          <% sizes.forEach(size => { %>
+          <option value="<%= size %>"><%= size %></option>
+          <% }) %>
+        </select>
+        <button onclick="uploadFile(this)">Upload</button>
+      </div>
+    </div>
+    <div>
+      <h2>Big logo sponsors</h2>
+      <ul></ul>
+    </div>
+
+    <script>
+      function uploadFile(button) {
+        const file = document.getElementById('filetoupload').files[0]
+        const size = document.getElementById('size').value
+        var formData = new FormData()
+        formData.append('filetoupload', file)
+        formData.append('size', size)
+
+        button.innerHTML = 'Uploading'
+        button.disabled = true
+
+        fetch('/api/sponsor/manage', {
+          method: 'POST',
+          body: formData
+        })
+          .then((response) => {
+            button.innerHTML = 'Upload'
+            button.disabled = false
+            location.reload()
+          })
+          .catch((error) => {
+            alert('Upload sponsor error')
+          })
+      }
+    </script>
+  </body>
+</html>
