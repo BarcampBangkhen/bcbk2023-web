@@ -1,20 +1,32 @@
+import { useEffect, useState } from "react";
 import SponsorPanel from "./sponsorPanel";
+import axios from "axios";
+import { ApiBaseUrl } from "../../Constant";
 
 export interface SponsorSectionProp{
     imageSize: string;
 }
 
 const SponsorContainer = () => {
-    const imageList = ['https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png', 'https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png', 'https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png', 'https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png', 'https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png']
-    const imageList2 = ['https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png', 'https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png', 'https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png', 'https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png', 'https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png', 'https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png', 'https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png', 'https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png', 'https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png']
-    const imageList3 = ['https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png', 'https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png', 'https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png', 'https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png', 'https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png', 'https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png', 'https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png', 'https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png', 'https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png', 'https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png', 'https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png', 'https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png', 'https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png', 'https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png', 'https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png', 'https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png', 'https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png', 'https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png', 'https://srasolutions.com.au/wp-content/uploads/2017/02/Logos-fake-mock-up-illust-ss143531671-2-705x501.png']
+    const [largeImageList, setLargeImageList] = useState([])
+    const [mediumImageList, setMediumImageList] = useState([])
+    const [smallImageList, setSmallImageList] = useState([])
+
+    useEffect(() => {
+        axios.get(ApiBaseUrl + "/sponsor").then((res) => {
+            setLargeImageList(res.data.large)
+            setMediumImageList(res.data.medium)
+            setSmallImageList(res.data.small)
+        })
+    }, [])
+
     return (
         <div className="mx-[10%] md:mt-0 mt-36">
             <p className="text-[#880D1E] text-center text-3xl">Barcamp Bangkhen would like to specially thank our 2023 sponsors.</p>
             <p className="text-black text-center text-lg my-8 mx-[20%]">We kindly request your support for our sponsors  during the event and throughout the year. Their generous contributions make this event possible and we are truly grateful for their support.</p>
-            <SponsorPanel imageSize={"large"} imageList={imageList}/>
-            <SponsorPanel imageSize={"medium"} imageList={imageList2}/>
-            <SponsorPanel imageSize={"small"} imageList={imageList3}/>
+            <SponsorPanel imageSize={"large"} imageList={largeImageList}/>
+            <SponsorPanel imageSize={"medium"} imageList={mediumImageList}/>
+            <SponsorPanel imageSize={"small"} imageList={smallImageList}/>
         </div>
         
     )

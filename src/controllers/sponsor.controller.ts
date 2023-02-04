@@ -3,9 +3,34 @@ import path from 'path'
 import Busboy from 'busboy'
 import fs from 'fs'
 import { Sponsor, SponsorLogoSize } from '../models/Sponsor.model'
+import { getFileList } from '../utils/FileHandler'
 
-export const GetAllSponsors = (req: Request, res: Response) => {
-  res.send(500).json({ status: 'In development' })
+export const GetAllSponsors = async (req: Request, res: Response) => {
+  const largeSponsorsPath = path.join(
+    __dirname,
+    '../..',
+    'frontend/build/assets/sponsors/big'
+  )
+  const mediumSponsorsPath = path.join(
+    __dirname,
+    '../..',
+    'frontend/build/assets/sponsors/medium'
+  )
+  const smallSponsorsPath = path.join(
+    __dirname,
+    '../..',
+    'frontend/build/assets/sponsors/small'
+  )
+  const bigSponsors = await getFileList(largeSponsorsPath)
+  const mediumSponsors = await getFileList(mediumSponsorsPath)
+  const smallSponsors = await getFileList(smallSponsorsPath)
+  res
+    .status(200)
+    .json({
+      large: bigSponsors.map((filename) => '/assets/sponsors/big/' + filename),
+      medium: mediumSponsors.map((filename) => '/assets/sponsors/medium/' + filename),
+      small: smallSponsors.map((filename) => '/assets/sponsors/small/' + filename)
+    })
 }
 
 export const ManageSponsors = (req: Request, res: Response) => {
@@ -16,11 +41,11 @@ export const ManageSponsors = (req: Request, res: Response) => {
   })
 }
 
-export const AddSponsor = (req: Request, res: Response) => {
+export const AddSponsor = async (req: Request, res: Response) => {
   const busboy = Busboy({ headers: req.headers })
   let size: SponsorLogoSize
 
-  busboy.on('file', (fieldname: string, file: any, filename: any) => {
+  busboy.on('file', async (fieldname: string, file: any, filename: any) => {
     if (fieldname === 'filetoupload') {
       const saveTo = path.join(__dirname, 'uploads/' + filename.filename)
       file.pipe(fs.createWriteStream(saveTo))
@@ -34,7 +59,6 @@ export const AddSponsor = (req: Request, res: Response) => {
   })
 
   busboy.on('finish', function () {
-    
     res.writeHead(200, { Connection: 'close' })
     res.end()
   })
