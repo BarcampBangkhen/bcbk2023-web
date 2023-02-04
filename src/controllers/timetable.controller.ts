@@ -1,12 +1,8 @@
 import { Request, Response } from 'express'
 import path from 'path'
-import fs from 'fs'
 import { ITimetable, Timetable } from '../models/TImetable.model'
+import { getFileList } from '../utils/FileHandler'
 
-const getFileList = async (path: string) => {
-  const filesList = await fs.promises.readdir(path)
-  return filesList
-}
 export const GetAllTimetable = async (req: Request, res: Response) => {
   const timetable = await Timetable.find({
     $and: [
