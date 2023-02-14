@@ -13,12 +13,4 @@ const router = Router()
 
 router.get('/', preventManualAccess, GetAllSponsors)
 
-router.get('/manage', ManageSponsors)
-
-router.post('/manage', AddSponsor)
-
-router.patch('/manage', validateSponsor, EditSponsor)
-
-router.delete('/manage', validateSponsor, RemoveSponsor)
-
 export default router
