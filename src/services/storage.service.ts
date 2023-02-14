@@ -3,7 +3,7 @@ import { Constant } from '../constant'
 import path from 'path'
 import fs from 'fs'
 
-const serviceAccount = require('./firebase.json')
+const serviceAccount = ''
 
 const firebaseApp = admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
