@@ -20,7 +20,12 @@ const SponsorPanel: React.FC<SponsorSectionProp> = ({
   }
 
   return (
-    <div className="flex flex-wrap justify-center py-10">
+    <div
+      className={
+        'flex flex-wrap justify-center py-10' +
+        (imageSize === 'small' ? ' gap-12' : '')
+      }
+    >
       {imageList.map((imageSrc, index) => {
         return (
           <div key={index} className={getClassName(imageSize)}>
