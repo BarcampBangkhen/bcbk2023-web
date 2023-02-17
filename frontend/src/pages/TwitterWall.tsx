@@ -77,7 +77,6 @@ const TwitterWall = () => {
     const tweetChoice = [...tweets]
     const selectedTweet =
       tweetChoice[Math.floor(Math.random() * tweetChoice.length)]
-    console.log(selectedTweet)
     setNominee(selectedTweet)
     setNomineeModalOpen(true)
   }
@@ -117,6 +116,7 @@ const TwitterWall = () => {
                 users={tweet.includes.users}
                 description={tweet.data.text}
                 images={tweet.includes.media}
+                shouldBounce={index === 0}
               />
             </div>
           )
