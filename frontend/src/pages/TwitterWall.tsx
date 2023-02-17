@@ -4,6 +4,7 @@ import TwitterCard from '../components/TwitterCard'
 import axios from 'axios'
 import { ApiBaseUrl } from '../Constant'
 import Modal from 'react-modal'
+import NomineeModal from '../components/TwitterCard/NomineeModal'
 
 const customStyles = {
   content: {
@@ -21,6 +22,8 @@ const TwitterWall = () => {
   const [socket, setSocket] = useState<WebSocket | null>(null)
   const [hashtag, setHashtag] = useState('')
   const [SettingModalOpen, setSettingModelOpen] = useState(false)
+  const [NomineeModalOpen, setNomineeModalOpen] = useState(false)
+  const [nominee, setNominee] = useState<TweetInfo>()
 
   useEffect(() => {
     const protocol = location.protocol === 'https:' ? 'wss:' : 'ws:'
@@ -70,6 +73,15 @@ const TwitterWall = () => {
     }
   }
 
+  const randomTweet = () => {
+    const tweetChoice = [...tweets]
+    const selectedTweet =
+      tweetChoice[Math.floor(Math.random() * tweetChoice.length)]
+    console.log(selectedTweet)
+    setNominee(selectedTweet)
+    setNomineeModalOpen(true)
+  }
+
   return (
     <div className="pt-10 w-screen h-screen">
       <div className="text-center grid place-content-center h-1/10">
@@ -87,6 +99,14 @@ const TwitterWall = () => {
             alt="TxtBarcamp"
             style={{ display: 'block', margin: '0 auto' }}
           />
+        </div>
+        <div className="pt-5">
+          <button
+            onClick={randomTweet}
+            className="scale-50 hover:scale-125 duration-200 transition"
+          >
+            Random
+          </button>
         </div>
       </div>
       <div className="py-10 px-5 flex flex-wrap justify-center">
@@ -121,6 +141,13 @@ const TwitterWall = () => {
           <button onClick={() => setSettingModelOpen(false)}>Close</button>
         </div>
       </Modal>
+      {nominee && NomineeModalOpen && (
+        <NomineeModal
+          show={NomineeModalOpen}
+          onClose={setNomineeModalOpen}
+          nominee={nominee}
+        />
+      )}
     </div>
   )
 }
