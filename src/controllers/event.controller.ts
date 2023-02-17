@@ -28,7 +28,7 @@ export const SetRulesTwitter = async (req: Request, res: Response) => {
     await deleteAllRules(currentRules)
 
     // Add rules to the stream. Comment the line below if you don't want to add new rules.
-    await setRules(req.body.value)
+    await setRules(req.body.value.replaceAll(" ", ''))
   } catch (e) {
     console.error(e)
     process.exit(1)
