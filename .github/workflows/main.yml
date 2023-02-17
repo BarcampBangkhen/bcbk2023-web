@@ -31,7 +31,6 @@ jobs:
           --quiet \
           --set-env-vars="MONGO_URI=${{ secrets.MONGO_URI }}" \
           --set-env-vars="TWITTER_BEARER_TOKEN=${{ secrets.TWITTER_BEARER_TOKEN }}" \
-          --set-env-vars="TWITTER_BEARER_TOKEN=bcbk10" \
           --region $REGION \
           --source . \
           --project $PROJECT_ID \
