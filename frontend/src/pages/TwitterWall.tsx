@@ -9,11 +9,12 @@ const TwitterWall = () => {
 
   useEffect(() => {
     const protocol = location.protocol === 'https:' ? 'wss:' : 'ws:'
-    const host =
-      import.meta.env.VITE_API_BASE_PATH.replace('http://', '').replace(
-        '/api',
-        ''
-      ) ?? location.host
+    const host = import.meta.env.VITE_API_BASE_PATH
+      ? import.meta.env.VITE_API_BASE_PATH.replace('http://', '').replace(
+          '/api',
+          ''
+        )
+      : location.host
     const path = '/api/event/twitter/stream'
     const newSocket = new WebSocket(`${protocol}//${host}${path}`)
 
