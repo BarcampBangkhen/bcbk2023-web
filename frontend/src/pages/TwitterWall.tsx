@@ -1,11 +1,26 @@
 import React, { useEffect, useState } from 'react'
 import { TweetInfo } from '../models/TweetInfo'
 import TwitterCard from '../components/TwitterCard'
+import axios from 'axios'
+import { ApiBaseUrl } from '../Constant'
+import Modal from 'react-modal'
+
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)'
+  }
+}
 
 const TwitterWall = () => {
   const [tweets, setTweets] = useState<TweetInfo[]>([])
   const [socket, setSocket] = useState<WebSocket | null>(null)
-  const numImages = 3
+  const [hashtag, setHashtag] = useState('')
+  const [SettingModalOpen, setSettingModelOpen] = useState(false)
 
   useEffect(() => {
     const protocol = location.protocol === 'https:' ? 'wss:' : 'ws:'
@@ -20,7 +35,7 @@ const TwitterWall = () => {
 
     newSocket.onmessage = (event: MessageEvent) => {
       const tweetInfo: TweetInfo = JSON.parse(event.data)
-      setTweets((current) => [...current, tweetInfo])
+      setTweets((current) => [tweetInfo, ...current])
     }
 
     newSocket.onclose = (event) => {
@@ -34,37 +49,28 @@ const TwitterWall = () => {
     }
   }, [])
 
-  useEffect(() => {
-    const mockData: TweetInfo = {
-      data: {
-        attachments: {
-          media_keys: undefined
-        },
-        author_id: '',
-        edit_history_tweet_ids: [],
-        id: '',
-        text: ''
-      },
-      includes: {
-        users: [
-          {
-            id: '874061671727104000',
-            name: 'TawanB.',
-            profile_image_url:
-              'https://pbs.twimg.com/profile_images/1227602822868303874/ttfU-OF3_normal.jpg',
-            username: 'Tboonmaeiei'
-          }
-        ],
-        media: undefined
-      },
-      matching_rules: []
-    }
-  })
+  const getCurrentHashtag = async () => {
+    const response = await axios.get(ApiBaseUrl + '/event/twitter')
+    setHashtag(response.data.value)
+  }
+
+  const onOpenModal = () => {
+    setSettingModelOpen(true)
+    getCurrentHashtag()
+  }
+
+  const sendHashtag = async () => {
+    const response = await axios.post(ApiBaseUrl + '/event/twitter', {
+      value: hashtag
+    })
+    if (response.status !== 200) alert('Hashtag not changed')
+    else setSettingModelOpen(false)
+  }
 
   return (
     <div className="pt-10 w-screen h-screen">
       <div className="text-center grid place-content-center h-1/10">
-        <div className="">
+        <div onClick={onOpenModal}>
           <img
             src="/assets/Logo.svg"
             alt="LogoBarcamp"
@@ -80,10 +86,10 @@ const TwitterWall = () => {
           />
         </div>
       </div>
-      <div className="p-10 flex flex-wrap justify-center">
+      <div className="py-10 px-5 flex flex-wrap justify-center">
         {tweets.map((tweet, index) => {
           return (
-            <div key={index}>
+            <div key={index} className="grid place-content-center">
               <TwitterCard
                 users={tweet.includes.users}
                 description={tweet.data.text}
@@ -93,6 +99,25 @@ const TwitterWall = () => {
           )
         })}
       </div>
+      <Modal
+        isOpen={SettingModalOpen}
+        onRequestClose={() => setSettingModelOpen(false)}
+        style={customStyles}
+        ariaHideApp={false}
+      >
+        <h2>Hashtag following</h2>
+        <input
+          type="text"
+          value={hashtag}
+          onChange={(e) => {
+            setHashtag(e.target.value)
+          }}
+        />
+        <button onClick={sendHashtag}>Submit</button>
+        <div>
+          <button onClick={() => setSettingModelOpen(false)}>Close</button>
+        </div>
+      </Modal>
     </div>
   )
 }

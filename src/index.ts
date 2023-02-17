@@ -9,7 +9,7 @@ import path from 'path'
 import cors from 'cors'
 import logger from './utils/logger'
 import expressWs from 'express-ws'
-import { StreamTwitter } from './controllers/event.controller'
+import { StreamTwitter, StreamTwitter2 } from './controllers/event.controller'
 
 const app = expressWs(express()).app
 const port = Constant.Port

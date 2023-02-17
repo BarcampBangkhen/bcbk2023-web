@@ -13,7 +13,7 @@ export interface TwitterCardProps {
 
 const TwitterCard = ({ users, description, images }: TwitterCardProps) => {
   return (
-    <div className="w-80 mx-4 my-6 bg-white rounded-2xl overflow-hidden shadow-lg border-Neutral01">
+    <div className="w-80 mx-4 my-6 bg-white rounded-2xl overflow-hidden shadow-lg border-Neutral01 bounce">
       <ImageCollage images={images} />
       <div className="py-4 px-6">
         {users.length > 0 && <User user={users[0]} />}

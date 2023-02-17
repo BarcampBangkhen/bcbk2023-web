@@ -31,14 +31,6 @@ const streamFields = {
 // with a standard project with Basic Access, you can add up to 25 concurrent rules to your stream, and
 // each rule can be up to 512 characters long
 
-// Edit rules as desired below
-const rules: TwitterStreamData[] = [
-  {
-    value: `#${Constant.TwitterHashtag} -is:retweet -is:reply`,
-    tag: Constant.TwitterHashtag
-  }
-]
-
 export async function getAllRules() {
   const response = await axios.get<TwitterStreamRules>(rulesURL, {
     headers: {
@@ -81,9 +73,14 @@ export async function deleteAllRules(rules: TwitterStreamRules) {
   return response.data
 }
 
-export async function setRules() {
+export async function setRules(hashtag: string) {
   const data = {
-    add: rules
+    add: [
+      {
+        value: `${hashtag} -is:retweet -is:reply`,
+        tag: hashtag
+      }
+    ]
   }
 
   const response = await axios.post(rulesURL, data, {
@@ -115,19 +112,18 @@ export class TwitterStream {
       },
       timeout: 10000
     })
-    stream
-      .on('err', (error) => {
-        if (error.code !== 'ECONNRESET') {
-          console.log('Error:', error.code)
-          process.exit(1)
-        } else {
-          // This reconnection logic will attempt to reconnect when a disconnection is detected.
-          // To avoid rate limits, this logic implements exponential backoff, so the wait time
-          // will increase if the client cannot reconnect to the stream.
-          console.warn('A connection error occurred. Reconnecting...')
-          process.exit(1)
-        }
-      })
+    stream.on('err', (error) => {
+      if (error.code !== 'ECONNRESET') {
+        console.log('Error:', error.code)
+        process.exit(1)
+      } else {
+        // This reconnection logic will attempt to reconnect when a disconnection is detected.
+        // To avoid rate limits, this logic implements exponential backoff, so the wait time
+        // will increase if the client cannot reconnect to the stream.
+        console.warn('A connection error occurred. Reconnecting...')
+        process.exit(1)
+      }
+    })
     this.pollingCheck = setInterval(this.checkListener, 5000)
     return stream
   }
@@ -142,7 +138,7 @@ export class TwitterStream {
   }
 
   static checkListener = () => {
-    console.log('Current client:', this.stream?.listenerCount('data'))
+    logger.info('Current client: ' + this.getClientCount())
     if (this.getClientCount() < 1) {
       this.stream.pause()
       this.stream.request.abort()

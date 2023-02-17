@@ -10,6 +10,13 @@ import { WebsocketRequestHandler } from 'express-ws'
 import logger from '../utils/logger'
 import { TweetInfo } from '../schemas/twitter.schema'
 
+let myInterval: any
+
+export const GetRulesTwitter = async (req: Request, res: Response) => {
+  const rules = await getAllRules()
+  return res.status(200).json({ value: rules.data[0].value.split(' ')[0] })
+}
+
 export const SetRulesTwitter = async (req: Request, res: Response) => {
   let currentRules
 
@@ -21,15 +28,13 @@ export const SetRulesTwitter = async (req: Request, res: Response) => {
     await deleteAllRules(currentRules)
 
     // Add rules to the stream. Comment the line below if you don't want to add new rules.
-    await setRules()
+    await setRules(req.body.value)
   } catch (e) {
     console.error(e)
     process.exit(1)
   }
 
-  res
-    .status(200)
-    .json({ status: currentRules, token: Constant.TwitterBearerToken })
+  res.status(200).json({ status: 'success' })
 }
 
 export const StreamTwitter: WebsocketRequestHandler = (ws, req) => {
@@ -63,6 +68,13 @@ export const StreamTwitter: WebsocketRequestHandler = (ws, req) => {
   })
 }
 
-export const StreamTwitter2 = (req: Request, res: Response) => {
-  res.status(200).json({ Status: 'Success' })
+export const StreamTwitter2: WebsocketRequestHandler = (ws, req) => {
+  myInterval = setInterval(() => {
+    ws.send(
+      `{"data":{"attachments":{"media_keys":["3_1626483865966776324","3_1626483866025484288","3_1626483865966776322"]},"author_id":"874061671727104000","edit_history_tweet_ids":["1626483873659092992"],"id":"1626483873659092992","text":"#tawanb "},"includes":{"media":[{"media_key":"3_1626483865966776324","type":"photo","url":"https://pbs.twimg.com/media/FpJudWfakAQW8V7.jpg"},{"media_key":"3_1626483866025484288","type":"photo","url":"https://pbs.twimg.com/media/FpJudWtaYAAyDfV.jpg"},{"media_key":"3_1626483865966776322","type":"photo","url":"https://pbs.twimg.com/media/FpJudWfakAIfr6N.jpg"}],"users":[{"id":"874061671727104000","name":"TawanB.","profile_image_url":"https://pbs.twimg.com/profile_images/1227602822868303874/ttfU-OF3_normal.jpg","username":"Tboonmaeiei"}]},"matching_rules":[{"id":"1626084620377944067","tag":"tawanb"}]}`
+    )
+  }, 2000)
+  ws.on('close', () => {
+    clearInterval(myInterval)
+  })
 }

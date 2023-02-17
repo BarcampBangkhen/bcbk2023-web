@@ -1,8 +1,14 @@
 import { Router } from 'express'
-import { SetRulesTwitter, StreamTwitter } from '../controllers/event.controller'
+import {
+  GetRulesTwitter,
+  SetRulesTwitter,
+  StreamTwitter
+} from '../controllers/event.controller'
 
 const router = Router()
 
-router.get('/twitter', SetRulesTwitter)
+router.get('/twitter', GetRulesTwitter)
+
+router.post('/twitter', SetRulesTwitter)
 
 export default router
