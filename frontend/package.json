@@ -15,6 +15,7 @@
     "pluralize": "^8.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-fb-image-video-grid": "^0.1.10",
     "react-markdown": "^8.0.5",
     "react-router-dom": "^6.4.5",
     "react-toastify": "^9.1.1"

@@ -11,6 +11,7 @@ import Footer from './components/Footer'
 import MobileSidebar from './components/Sidebar'
 import InProgress from './components/InProgress'
 import NotFound from './components/NotFound'
+import TwitterWall from './pages/TwitterWall'
 
 function App(): JSX.Element {
   return (

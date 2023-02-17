@@ -30,6 +30,7 @@ jobs:
           gcloud run deploy $SERVICE \
           --quiet \
           --set-env-vars="MONGO_URI=${{ secrets.MONGO_URI }}" \
+          --set-env-vars="TWITTER_BEARER_TOKEN=${{ secrets.TWITTER_BEARER_TOKEN }}" \
           --region $REGION \
           --source . \
           --project $PROJECT_ID \
