@@ -64,7 +64,10 @@ const TwitterWall = () => {
       value: hashtag
     })
     if (response.status !== 200) alert('Hashtag not changed')
-    else setSettingModelOpen(false)
+    else {
+      setSettingModelOpen(false)
+      location.reload()
+    }
   }
 
   return (
