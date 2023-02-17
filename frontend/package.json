@@ -15,14 +15,18 @@
     "pluralize": "^8.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-fb-image-video-grid": "^0.1.10",
     "react-markdown": "^8.0.5",
+    "react-modal": "^3.16.1",
     "react-router-dom": "^6.4.5",
+    "react-spring": "^9.6.1",
     "react-toastify": "^9.1.1"
   },
   "devDependencies": {
     "@types/pluralize": "^0.0.29",
     "@types/react": "^18.0.24",
     "@types/react-dom": "^18.0.8",
+    "@types/react-modal": "^3.13.1",
     "@vitejs/plugin-react": "^2.2.0",
     "autoprefixer": "^10.4.13",
     "postcss": "^8.4.19",

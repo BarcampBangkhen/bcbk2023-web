@@ -1,13 +1,17 @@
 import express, { NextFunction, Request, Response, Router } from 'express'
 import faqRouter from './routes/faq.route'
 import timetableRouter from './routes/timetable.route'
+import sponsorRouter from './routes/sponsor.route'
+import eventRouter from './routes/event.route'
 import { connect, set } from 'mongoose'
 import { Constant } from './constant'
 import path from 'path'
 import cors from 'cors'
 import logger from './utils/logger'
+import expressWs from 'express-ws'
+import { StreamTwitter, StreamTwitter2 } from './controllers/event.controller'
 
-const app = express()
+const app = expressWs(express()).app
 const port = Constant.Port
 const staticPath = path.normalize(
   path.join(__dirname, '..', 'frontend', 'build')
@@ -36,11 +40,14 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 app.use(express.json())
 
 const apiRouter = Router()
+apiRouter.use('/event', eventRouter)
 apiRouter.use('/faq', faqRouter)
 apiRouter.use('/timetable', timetableRouter)
+apiRouter.use('/sponsor', sponsorRouter)
 
 app.set('view engine', 'ejs')
 app.use('/api', cors(), apiRouter)
+app.ws('/api/event/twitter/stream', StreamTwitter)
 
 app.use(express.static(staticPath))
 app.get('*', (req: Request, res: Response) => {

@@ -6,6 +6,7 @@ import {
   PutQuestion
 } from '../controllers/faq.controller'
 import { preventManualAccess } from '../utils/ApiMiddleware'
+import { validate } from '../utils/validateUser'
 
 const router = Router()
 
@@ -15,6 +16,6 @@ router.put('/', preventManualAccess, PutQuestion)
 
 router.get('/manage', GetAllQuestions)
 
-router.patch('/manage', PatchQuestion)
+router.patch('/manage', validate, PatchQuestion)
 
 export default router
