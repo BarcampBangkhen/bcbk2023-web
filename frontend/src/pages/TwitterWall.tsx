@@ -19,7 +19,6 @@ const TwitterWall = () => {
 
     newSocket.onmessage = (event: MessageEvent) => {
       const tweetInfo: TweetInfo = JSON.parse(event.data)
-      console.log('Received message:', tweetInfo)
       setTweets((current) => [...current, tweetInfo])
     }
 
